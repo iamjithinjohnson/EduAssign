@@ -1,82 +1,86 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:edu_assign/02_view/01_home_page/widgets/app_bar_home.dart';
 import 'package:edu_assign/06_utils/constant.dart';
+import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool press = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(15.w),
+        padding: screenWidth,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    WWText('Hello,', textSize: TextSize.fw700px28),
-                    WWText('Good Morning', textSize: TextSize.fw400px22)
-                  ],
-                ),
-                const Icon(Icons.menu),
-              ],
-            ),
+            AppbarHome(
+                press: press,
+                onPressed: () {
+                  setState(() {
+                    press = !press;
+                  });
+                }),
             sized0hx50,
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                          height: 216.sp,
-                          child: ColoredBox(
-                              color: const Color(0xffAAC9BF),
-                              child: Column(
-                                children: [
-                                  SvgPicture.asset('assets/svg/book.svg'),
-                                  WWText('Students',
-                                      textSize: TextSize.fw600px17),
-                                ],
-                              ))),
-                    ),
-                    sized0wx10,
-                    Expanded(
-                      child: SizedBox(
-                          height: 216.sp,
-                          child: const ColoredBox(color: Color(0xffD8EBFD))),
-                    )
-                  ],
-                ),
-                sized0hx10,
-                Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                          height: 216.sp,
-                          child: const ColoredBox(color: Color(0xffFFE0DD))),
-                    ),
-                    sized0wx10,
-                    Expanded(
-                      child: SizedBox(
-                          height: 216.sp,
-                          child: const ColoredBox(color: Color(0xffFFF3D9))),
-                    )
-                  ],
-                )
-              ],
+            Flexible(
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: press ? 1 : 2,
+                      crossAxisSpacing: 10.sp,
+                      mainAxisSpacing: 25.sp,
+                      childAspectRatio: press ? 7 : 0.8),
+                  itemCount: homeButtons.length,
+                  itemBuilder: (context, index) {
+                    return homeButton(
+                        text: homeButtons[index]['text'],
+                        asset: press ? null : homeButtons[index]['asset'],
+                        color: homeButtons[index]['color'],
+                        onTap: () {
+                          print('asdasdasd');
+                          context.router.pushNamed(RouteNames.studentPage);
+                        });
+                  }),
             )
           ],
         ),
       ),
     ));
+  }
+
+  Widget homeButton(
+      {required String text,
+      String? asset,
+      required Color color,
+      required Function() onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(10.r)),
+        child: ColoredBox(
+            color: color,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (asset != null) ...[
+                  SvgPicture.asset(asset),
+                  sized0hx05,
+                ],
+                WWText(text, textSize: TextSize.fw600px17),
+              ],
+            )),
+      ),
+    );
   }
 }

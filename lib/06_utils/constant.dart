@@ -28,10 +28,25 @@ void customPrint({String? name, required dynamic content}) {
   debugPrint("= = = = = = = = = = = = = = = = = = = = = = = = = =");
 }
 
-const salesFilter = [
-  'Today',
-  'Yesterday',
-  'Draft',
-  'Confirm',
-  'Date',
+List<Map<String, dynamic>> homeButtons = [
+  {
+    "text": "Students",
+    "asset": "assets/svg/hat.svg",
+    "color": const Color(0xffAAC9BF)
+  },
+  {
+    "text": "Subjects",
+    "asset": "assets/svg/book.svg",
+    "color": const Color(0xffD8EBFD)
+  },
+  {
+    "text": "Class Rooms",
+    "asset": "assets/svg/door.svg",
+    "color": const Color(0xffFFE0DD)
+  },
+  {
+    "text": "Registration",
+    "asset": "assets/svg/pencil.svg",
+    "color": const Color(0xffFFF3D9)
+  }
 ];
