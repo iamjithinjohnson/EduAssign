@@ -22,22 +22,21 @@ class HttpService {
   HttpService._internal();
 
   Future<Either<Map<MainFailure, dynamic>, dynamic>> request({
-    dynamic data,
+    dynamic payLoad,
     required String apiUrl,
     HttpMethod method = HttpMethod.get,
   }) async {
     Client client;
     client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-    var baseUrl = dotenv.env['API_KEY'];
-    var apiToken = dotenv.env['BASE_URL'];
+    var baseUrl = dotenv.env['BASE_URL'];
+    var apiToken = dotenv.env['API_KEY'];
     try {
       final url = "$baseUrl/$apiUrl/?$apiToken";
       customPrint(content: url, name: "url");
-      if (data != null) customPrint(content: data, name: "Payload");
-
+      if (payLoad != null) customPrint(content: payLoad, name: "Payload");
       final Response response;
-      response = await httpSwitchMethod(method, client, url, data);
+      response = await httpSwitchMethod(method, client, url, payLoad);
       customPrint(content: response.statusCode, name: "Status Code");
       customPrint(content: response.body, name: "Response");
 
