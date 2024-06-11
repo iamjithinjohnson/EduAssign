@@ -1,7 +1,9 @@
 class EndPoints {
-  static const baseUrl = 'http://192.168.1.16:8016';
+  static const apiKey = 'api_key=6d41F';
 
-  static const login = '/web/session/authenticate/';
+  static const baseUrl = 'https://nibrahim.pythonanywhere.com';
+
+  static const studentApi = 'students/$apiKey';
 
   static const getCustomers = '/api/v1/customers';
 
