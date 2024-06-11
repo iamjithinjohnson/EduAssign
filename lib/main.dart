@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // DatabaseHelper.instance;
   await ScreenUtil.ensureScreenSize();
   configureLocalDependancies();
   runApp(const MyApp());
