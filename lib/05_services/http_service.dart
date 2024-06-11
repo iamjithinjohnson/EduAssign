@@ -4,9 +4,9 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:edu_assign/06_utils/constant.dart';
-import 'package:edu_assign/06_utils/end_points.dart';
 import 'package:edu_assign/06_utils/failure/main_failure.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 import 'package:injectable/injectable.dart';
@@ -29,8 +29,10 @@ class HttpService {
     Client client;
     client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
+    var baseUrl = dotenv.env['API_KEY'];
+    var apiToken = dotenv.env['BASE_URL'];
     try {
-      final url = "${EndPoints.baseUrl}$apiUrl";
+      final url = "$baseUrl/$apiUrl/?$apiToken";
       customPrint(content: url, name: "url");
       if (data != null) customPrint(content: data, name: "Payload");
 
