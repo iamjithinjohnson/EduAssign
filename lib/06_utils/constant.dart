@@ -53,6 +53,6 @@ List<Map<String, dynamic>> homeButtons = [
     "text": "Registration",
     "asset": AppImages.pencil,
     "color": const Color(0xffFFF3D9),
-    "navigate": RouteNames.subjectPage
+    "navigate": RouteNames.registationMainPage
   }
 ];
