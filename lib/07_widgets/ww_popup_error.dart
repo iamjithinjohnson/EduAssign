@@ -4,9 +4,7 @@ import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:flutter/material.dart';
 
 popupErrorData(BuildContext context,
-    {String? content,
-    // required Function() onTap,
-    required Map<MainFailure, dynamic>? mainFailure}) {
+    {String? content, Map<MainFailure, dynamic>? mainFailure}) {
   return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -15,6 +13,7 @@ popupErrorData(BuildContext context,
                 onTap: () => Navigator.pop(context),
                 mainFailure: mainFailure,
                 isFromPopUp: true,
+                content: content,
                 context: context));
       });
 }
@@ -26,8 +25,6 @@ Widget wwErrorData(
     required Function() onTap,
     required Map<MainFailure, dynamic>? mainFailure}) {
   var failure = mainFailure?.keys.toList()[0];
-
-  // customPrint(content: mainFailure?.values.toList()[0]);
 
   String? failureMessage = mainFailure?.values.toList()[0];
 

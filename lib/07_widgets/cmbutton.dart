@@ -1,3 +1,4 @@
+import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,7 +48,7 @@ class CmButton extends StatelessWidget {
           onPressed: onPressed,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(
-              color ?? Colors.green,
+              color ?? AppColors.cGreen,
             ),
             shape: MaterialStateProperty.all<OutlinedBorder>(
               RoundedRectangleBorder(

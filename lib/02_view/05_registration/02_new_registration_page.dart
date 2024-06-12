@@ -5,6 +5,7 @@ import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_popup_error.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -43,12 +44,25 @@ class NewRegistrationPage extends StatelessWidget {
                       .push(SubjectMainRoute(isFromNewRegisgter: true)));
             }),
             sized0hx50,
-            CmButton(
-              text: 'Register',
-              color: AppColors.cGreen,
-              width: ScreenUtil().screenWidth / 3,
-              onPressed: () {},
-            ),
+            Observer(builder: (context) {
+              return CmButton(
+                text: 'Register',
+                color: AppColors.cGreen,
+                width: ScreenUtil().screenWidth / 3,
+                loading: vmRegistration.newRegistrationResponse.loading,
+                onPressed: () {
+                  int? stdId = vmRegistration.student?.id;
+                  int? subId = vmRegistration.subject?.id;
+                  if (stdId != null && subId != null) {
+                    vmRegistration.updateClassRoomSubjectApi(context,
+                        studentId: stdId, subjectId: subId);
+                  } else {
+                    popupErrorData(context,
+                        content: 'Please select both a subject and a student.');
+                  }
+                },
+              );
+            }),
             sized0hx30,
           ],
         ),

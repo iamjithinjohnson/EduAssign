@@ -58,6 +58,24 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
     });
   }
 
+  late final _$newRegistrationResponseAtom = Atom(
+      name: 'RegistrationViewModelBase.newRegistrationResponse',
+      context: context);
+
+  @override
+  ApiResponse<String> get newRegistrationResponse {
+    _$newRegistrationResponseAtom.reportRead();
+    return super.newRegistrationResponse;
+  }
+
+  @override
+  set newRegistrationResponse(ApiResponse<String> value) {
+    _$newRegistrationResponseAtom
+        .reportWrite(value, super.newRegistrationResponse, () {
+      super.newRegistrationResponse = value;
+    });
+  }
+
   late final _$fetchRegistrationApiAsyncAction = AsyncAction(
       'RegistrationViewModelBase.fetchRegistrationApi',
       context: context);
@@ -68,12 +86,25 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
         .run(() => super.fetchRegistrationApi());
   }
 
+  late final _$updateClassRoomSubjectApiAsyncAction = AsyncAction(
+      'RegistrationViewModelBase.updateClassRoomSubjectApi',
+      context: context);
+
+  @override
+  Future<void> updateClassRoomSubjectApi(BuildContext context,
+      {required int subjectId, required int studentId}) {
+    return _$updateClassRoomSubjectApiAsyncAction.run(() => super
+        .updateClassRoomSubjectApi(context,
+            subjectId: subjectId, studentId: studentId));
+  }
+
   @override
   String toString() {
     return '''
 student: ${student},
 subject: ${subject},
-registrationResponse: ${registrationResponse}
+registrationResponse: ${registrationResponse},
+newRegistrationResponse: ${newRegistrationResponse}
     ''';
   }
 }
