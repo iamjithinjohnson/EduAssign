@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
 class StudentDetailPage extends StatelessWidget {
-  const StudentDetailPage({super.key});
+  final Student? data;
+  const StudentDetailPage({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
+    customPrint(content: data?.name ?? '', name: 'asd');
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -22,12 +25,11 @@ class StudentDetailPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                WWText('Lourie Thomas', textSize: TextSize.fw400px22),
+                WWText(data?.name ?? '', textSize: TextSize.fw400px22),
                 sized0hx05,
-                WWText('Age 22', textSize: TextSize.fw400px22),
+                WWText('Age ${data?.age} ', textSize: TextSize.fw400px22),
                 sized0hx05,
-                WWText('louriethomas@example.com',
-                    textSize: TextSize.fw400px13),
+                WWText(data?.email ?? '', textSize: TextSize.fw400px13),
                 sized0hx05,
               ],
             ),

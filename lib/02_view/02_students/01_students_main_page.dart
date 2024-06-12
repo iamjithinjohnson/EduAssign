@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
+import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/ww_response_handler.dart';
@@ -44,9 +45,7 @@ class StudentsMainPage extends StatelessWidget {
 }
 
 class StudentsListViewWidget extends StatelessWidget {
-  const StudentsListViewWidget({
-    super.key,
-  });
+  const StudentsListViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,8 @@ class StudentsListViewWidget extends StatelessWidget {
           return wwTile(
               data: data,
               onTap: () {
-                context.router.pushNamed(RouteNames.studentDetailPage);
+                customPrint(content: data?.age ?? '');
+                context.router.push(StudentDetailRoute(data: data));
               });
         });
   }
