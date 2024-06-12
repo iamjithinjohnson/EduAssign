@@ -32,12 +32,11 @@ class RegistrationMainPage extends StatelessWidget {
                 child: WWText('Registration', textSize: TextSize.fw700px22)),
             sized0hx30,
             Observer(builder: (_) {
+              var res = vmRegistration.registrationResponse;
               return Expanded(
                   child: WWResponseHandler(
-                      data: vmRegistration.registrationResponse,
-                      isEmpty: vmRegistration.registrationResponse.data
-                              ?.registrations?.isEmpty ??
-                          true,
+                      data: res,
+                      isEmpty: res.data?.registrations?.isEmpty ?? true,
                       onTap: () => vmRegistration.fetchRegistrationApi(),
                       onRefresh: () => vmRegistration.fetchRegistrationApi(),
                       child: const RegistrationListViewWidget()));

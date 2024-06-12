@@ -21,38 +21,32 @@ class StudentsMainPage extends StatelessWidget {
       vmStudent.fetchStudentsApi();
     });
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: screenWidth,
-        child: Column(
-          children: [
-            Align(
-                alignment: Alignment.center,
-                child: WWText('Students', textSize: TextSize.fw700px22)),
-            sized0hx30,
-            Observer(builder: (_) {
-              return Expanded(
-                  child: WWResponseHandler(
-                      data: vmStudent.studentResponse,
-                      isEmpty:
-                          vmStudent.studentResponse.data?.students?.isEmpty ??
-                              true,
-                      onTap: () => vmStudent.fetchStudentsApi(),
-                      onRefresh: () => vmStudent.fetchStudentsApi(),
-                      child: StudentsListViewWidget(
-                          isFromNewRegisgter: isFromNewRegisgter)));
-            }),
-          ],
-        ),
+    return wwHeader(
+      child: Column(
+        children: [
+          Align(
+              alignment: Alignment.center,
+              child: WWText('Students', textSize: TextSize.fw700px22)),
+          sized0hx30,
+          Observer(builder: (_) {
+            var res = vmStudent.studentResponse;
+            return Expanded(
+                child: WWResponseHandler(
+                    data: res,
+                    isEmpty: res.data?.students?.isEmpty ?? true,
+                    onTap: () => vmStudent.fetchStudentsApi(),
+                    onRefresh: () => vmStudent.fetchStudentsApi(),
+                    child: StudentsListViewWidget(newReg: isFromNewRegisgter)));
+          }),
+        ],
       ),
     );
   }
 }
 
 class StudentsListViewWidget extends StatelessWidget {
-  final bool isFromNewRegisgter;
-  const StudentsListViewWidget({super.key, required this.isFromNewRegisgter});
+  final bool newReg;
+  const StudentsListViewWidget({super.key, required this.newReg});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +60,7 @@ class StudentsListViewWidget extends StatelessWidget {
               subtitle: data?.email ?? '',
               trailing: 'Age ${data?.age}',
               onTap: () {
-                if (isFromNewRegisgter && data != null) {
+                if (newReg && data != null) {
                   vmRegistration.student = data;
                   Navigator.pop(context);
                   return;

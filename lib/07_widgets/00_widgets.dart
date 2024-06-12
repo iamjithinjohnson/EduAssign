@@ -1,7 +1,11 @@
 import 'package:edu_assign/06_utils/app_colors.dart';
+import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+Widget wwHeader({required Widget child}) => Scaffold(
+    appBar: AppBar(), body: Padding(padding: screenWidth, child: child));
 
 Widget wwTile({
   required String title,

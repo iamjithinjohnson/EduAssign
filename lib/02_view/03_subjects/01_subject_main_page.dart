@@ -23,42 +23,36 @@ class SubjectMainPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       vmSubject.fetchSubjectApi();
     });
-    return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: screenWidth,
-        child: Column(
-          children: [
-            Align(
-                alignment: Alignment.center,
-                child: WWText('Subjects', textSize: TextSize.fw700px22)),
-            sized0hx30,
-            Observer(builder: (_) {
-              return Expanded(
-                  child: WWResponseHandler(
-                      data: vmSubject.subjectResponse,
-                      isEmpty:
-                          vmSubject.subjectResponse.data?.subjects?.isEmpty ??
-                              true,
-                      onTap: () => vmSubject.fetchSubjectApi(),
-                      onRefresh: () => vmSubject.fetchSubjectApi(),
-                      child: SubjectListViewWidget(
-                          classRoomID: classRoomID,
-                          isFromNewRegisgter: isFromNewRegisgter)));
-            }),
-          ],
-        ),
+    return wwHeader(
+      child: Column(
+        children: [
+          Align(
+              alignment: Alignment.center,
+              child: WWText('Subjects', textSize: TextSize.fw700px22)),
+          sized0hx30,
+          Observer(builder: (_) {
+            var res = vmSubject.subjectResponse;
+            return Expanded(
+                child: WWResponseHandler(
+                    data: res,
+                    isEmpty: res.data?.subjects?.isEmpty ?? true,
+                    onTap: () => vmSubject.fetchSubjectApi(),
+                    onRefresh: () => vmSubject.fetchSubjectApi(),
+                    child: SubjectListViewWidget(
+                        classRoomID: classRoomID, newReg: isFromNewRegisgter)));
+          }),
+        ],
       ),
     );
   }
 }
 
 class SubjectListViewWidget extends StatelessWidget {
-  final bool isFromNewRegisgter;
+  final bool newReg;
 
   final int? classRoomID;
   const SubjectListViewWidget(
-      {super.key, this.classRoomID, required this.isFromNewRegisgter});
+      {super.key, this.classRoomID, required this.newReg});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +72,7 @@ class SubjectListViewWidget extends StatelessWidget {
                   return;
                 }
 
-                if (isFromNewRegisgter && data != null) {
+                if (newReg && data != null) {
                   vmRegistration.subject = data;
                   Navigator.pop(context);
                   return;

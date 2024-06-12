@@ -29,12 +29,11 @@ class ClassRoomMainPage extends StatelessWidget {
                 child: WWText('Class Rooms', textSize: TextSize.fw700px22)),
             sized0hx30,
             Observer(builder: (_) {
+              var res = vmClassRoom.classRoomResponse;
               return Expanded(
                   child: WWResponseHandler(
-                      data: vmClassRoom.classRoomResponse,
-                      isEmpty: vmClassRoom
-                              .classRoomResponse.data?.classrooms?.isEmpty ??
-                          true,
+                      data: res,
+                      isEmpty: res.data?.classrooms?.isEmpty ?? true,
                       onTap: () => vmClassRoom.fetchClassRoomApi(),
                       onRefresh: () => vmClassRoom.fetchClassRoomApi(),
                       child: const ClassRoomListViewWidget()));

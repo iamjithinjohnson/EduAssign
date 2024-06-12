@@ -17,55 +17,50 @@ class NewRegistrationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: screenWidth,
-        child: Column(
-          children: [
-            Align(
-                alignment: Alignment.center,
-                child:
-                    WWText('New Registration', textSize: TextSize.fw700px22)),
-            sized0hx30,
-            Observer(builder: (context) {
-              return wwTile(
-                  title: vmRegistration.student?.name ?? 'Select a student',
-                  trailingW: const Icon(Icons.keyboard_arrow_right_rounded),
-                  onTap: () => context.router
-                      .push(StudentsMainRoute(isFromNewRegisgter: true)));
-            }),
-            sized0hx10,
-            Observer(builder: (context) {
-              return wwTile(
-                  title: vmRegistration.subject?.name ?? 'Select a subject',
-                  trailingW: const Icon(Icons.keyboard_arrow_right_rounded),
-                  onTap: () => context.router
-                      .push(SubjectMainRoute(isFromNewRegisgter: true)));
-            }),
-            sized0hx50,
-            Observer(builder: (context) {
-              return CmButton(
-                text: 'Register',
-                color: AppColors.cGreen,
-                width: ScreenUtil().screenWidth / 3,
-                loading: vmRegistration.newRegistrationResponse.loading,
-                onPressed: () {
-                  int? stdId = vmRegistration.student?.id;
-                  int? subId = vmRegistration.subject?.id;
-                  if (stdId != null && subId != null) {
-                    vmRegistration.updateClassRoomSubjectApi(context,
-                        studentId: stdId, subjectId: subId);
-                  } else {
-                    popupErrorData(context,
-                        content: 'Please select both a subject and a student.');
-                  }
-                },
-              );
-            }),
-            sized0hx30,
-          ],
-        ),
+    return wwHeader(
+      child: Column(
+        children: [
+          Align(
+              alignment: Alignment.center,
+              child: WWText('New Registration', textSize: TextSize.fw700px22)),
+          sized0hx30,
+          Observer(builder: (context) {
+            return wwTile(
+                title: vmRegistration.student?.name ?? 'Select a student',
+                trailingW: const Icon(Icons.keyboard_arrow_right_rounded),
+                onTap: () => context.router
+                    .push(StudentsMainRoute(isFromNewRegisgter: true)));
+          }),
+          sized0hx10,
+          Observer(builder: (context) {
+            return wwTile(
+                title: vmRegistration.subject?.name ?? 'Select a subject',
+                trailingW: const Icon(Icons.keyboard_arrow_right_rounded),
+                onTap: () => context.router
+                    .push(SubjectMainRoute(isFromNewRegisgter: true)));
+          }),
+          sized0hx50,
+          Observer(builder: (context) {
+            return CmButton(
+              text: 'Register',
+              color: AppColors.cGreen,
+              width: ScreenUtil().screenWidth / 3,
+              loading: vmRegistration.newRegistrationResponse.loading,
+              onPressed: () {
+                int? stdId = vmRegistration.student?.id;
+                int? subId = vmRegistration.subject?.id;
+                if (stdId != null && subId != null) {
+                  vmRegistration.updateClassRoomSubjectApi(context,
+                      studentId: stdId, subjectId: subId);
+                } else {
+                  popupErrorData(context,
+                      content: 'Please select both a subject and a student.');
+                }
+              },
+            );
+          }),
+          sized0hx30,
+        ],
       ),
     );
   }
