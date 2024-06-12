@@ -49,8 +49,8 @@ class _HomePageState extends State<HomePage> {
                         asset: press ? null : homeButtons[index]['asset'],
                         color: homeButtons[index]['color'],
                         onTap: () {
-                          vmStudent.fetchStudentsApi();
-                          context.router.pushNamed(RouteNames.studentPage);
+                          context.router
+                              .pushNamed(homeButtons[index]['navigate']);
                         });
                   }),
             )

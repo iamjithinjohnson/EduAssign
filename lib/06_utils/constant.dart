@@ -1,3 +1,4 @@
+import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,21 +33,25 @@ List<Map<String, dynamic>> homeButtons = [
   {
     "text": "Students",
     "asset": "assets/svg/hat.svg",
-    "color": const Color(0xffAAC9BF)
+    "color": const Color(0xffAAC9BF),
+    "navigate": RouteNames.studentPage
   },
   {
     "text": "Subjects",
     "asset": "assets/svg/book.svg",
-    "color": const Color(0xffD8EBFD)
+    "color": const Color(0xffD8EBFD),
+    "navigate": RouteNames.subjectPage
   },
   {
     "text": "Class Rooms",
     "asset": "assets/svg/door.svg",
-    "color": const Color(0xffFFE0DD)
+    "color": const Color(0xffFFE0DD),
+    "navigate": RouteNames.subjectPage
   },
   {
     "text": "Registration",
     "asset": "assets/svg/pencil.svg",
-    "color": const Color(0xffFFF3D9)
+    "color": const Color(0xffFFF3D9),
+    "navigate": RouteNames.subjectPage
   }
 ];

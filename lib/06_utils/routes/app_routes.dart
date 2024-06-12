@@ -18,5 +18,13 @@ class AppRouter extends $AppRouter {
           page: StudentDetailRoute.page,
           path: RouteNames.studentDetailPage,
         ),
+        AutoRoute(
+          page: SubjectMainRoute.page,
+          path: RouteNames.subjectPage,
+        ),
+        AutoRoute(
+          page: SubjectDetailRoute.page,
+          path: RouteNames.subjectDetailpage,
+        ),
       ];
 }
