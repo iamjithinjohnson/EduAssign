@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/02_view/01_home_page/widgets/app_bar_home.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
-import 'package:edu_assign/04_respository/02_students/students_repo.dart';
-import 'package:edu_assign/05_services/http_service.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';

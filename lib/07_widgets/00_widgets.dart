@@ -1,5 +1,4 @@
 import 'package:edu_assign/01_model/02_students/student_model/student.dart';
-import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

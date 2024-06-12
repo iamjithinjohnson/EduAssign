@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CmButton extends StatelessWidget {
   const CmButton({
-    Key? key,
+    super.key,
     this.alignment,
     this.buttonTextStyle,
     this.height,
@@ -17,7 +17,7 @@ class CmButton extends StatelessWidget {
     this.icon,
     this.loading = false,
     this.loadingColor,
-  }) : super(key: key);
+  });
 
   final IconData? icon;
   final ButtonStyle? buttonStyle;

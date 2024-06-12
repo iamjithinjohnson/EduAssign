@@ -3,7 +3,6 @@ import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
-import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/ww_response_handler.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
