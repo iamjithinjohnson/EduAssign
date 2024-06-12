@@ -46,7 +46,7 @@ List<Map<String, dynamic>> homeButtons = [
     "text": "Class Rooms",
     "asset": "assets/svg/door.svg",
     "color": const Color(0xffFFE0DD),
-    "navigate": RouteNames.subjectPage
+    "navigate": RouteNames.classRoomPage
   },
   {
     "text": "Registration",

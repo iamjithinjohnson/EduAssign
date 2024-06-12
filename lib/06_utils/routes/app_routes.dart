@@ -26,5 +26,9 @@ class AppRouter extends $AppRouter {
           page: SubjectDetailRoute.page,
           path: RouteNames.subjectDetailpage,
         ),
+        AutoRoute(
+          page: ClassRoomMainRoute.page,
+          path: RouteNames.classRoomPage,
+        ),
       ];
 }

@@ -37,7 +37,7 @@ class SubjectMainPage extends StatelessWidget {
                               true,
                       onTap: () => vmSubject.fetchSubjectApi(),
                       onRefresh: () => vmSubject.fetchSubjectApi(),
-                      child: const StudentsListViewWidget()));
+                      child: const SubjectListViewWidget()));
             }),
           ],
         ),
@@ -46,8 +46,8 @@ class SubjectMainPage extends StatelessWidget {
   }
 }
 
-class StudentsListViewWidget extends StatelessWidget {
-  const StudentsListViewWidget({super.key});
+class SubjectListViewWidget extends StatelessWidget {
+  const SubjectListViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +61,7 @@ class StudentsListViewWidget extends StatelessWidget {
               subtitle: data?.teacher ?? '',
               trailing: 'Credit : ${data?.credits}',
               onTap: () {
-                context.router.push(SubjectDetailRoute(
-                  data: data,
-                ));
+                context.router.push(SubjectDetailRoute(data: data));
               });
         });
   }
