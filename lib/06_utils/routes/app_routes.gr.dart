@@ -8,80 +8,132 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:edu_assign/01_model/02_students/student_model/student.dart'
-    as _i9;
+    as _i11;
 import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart'
+    as _i12;
+import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart'
     as _i10;
-import 'package:edu_assign/02_view/01_home_page/home_page.dart' as _i2;
+import 'package:edu_assign/02_view/01_home_page/home_page.dart' as _i3;
 import 'package:edu_assign/02_view/02_students/01_students_main_page.dart'
-    as _i4;
-import 'package:edu_assign/02_view/02_students/02_student_detail_page.dart'
-    as _i3;
-import 'package:edu_assign/02_view/03_subjects/01_subject_main_page.dart'
-    as _i6;
-import 'package:edu_assign/02_view/03_subjects/02_subject_detail_page.dart'
     as _i5;
+import 'package:edu_assign/02_view/02_students/02_student_detail_page.dart'
+    as _i4;
+import 'package:edu_assign/02_view/03_subjects/01_subject_main_page.dart'
+    as _i7;
+import 'package:edu_assign/02_view/03_subjects/02_subject_detail_page.dart'
+    as _i6;
 import 'package:edu_assign/02_view/04_class_room/01_classRoom_main_page.dart'
+    as _i2;
+import 'package:edu_assign/02_view/04_class_room/02_classRoom_detail_page.dart'
     as _i1;
-import 'package:flutter/material.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
-abstract class $AppRouter extends _i7.RootStackRouter {
+abstract class $AppRouter extends _i8.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
-    ClassRoomMainRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+  final Map<String, _i8.PageFactory> pagesMap = {
+    ClassRoomDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ClassRoomDetailRouteArgs>();
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.ClassRoomMainPage(),
+        child: _i1.ClassRoomDetailPage(
+          key: args.key,
+          data: args.data,
+        ),
+      );
+    },
+    ClassRoomMainRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.ClassRoomMainPage(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.HomePage(),
+        child: const _i3.HomePage(),
       );
     },
     StudentDetailRoute.name: (routeData) {
       final args = routeData.argsAs<StudentDetailRouteArgs>();
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.StudentDetailPage(
+        child: _i4.StudentDetailPage(
           key: args.key,
           data: args.data,
         ),
       );
     },
     StudentsMainRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.StudentsMainPage(),
+        child: const _i5.StudentsMainPage(),
       );
     },
     SubjectDetailRoute.name: (routeData) {
       final args = routeData.argsAs<SubjectDetailRouteArgs>();
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.SubjectDetailPage(
+        child: _i6.SubjectDetailPage(
           key: args.key,
           data: args.data,
         ),
       );
     },
     SubjectMainRoute.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.SubjectMainPage(),
+        child: const _i7.SubjectMainPage(),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.ClassRoomMainPage]
-class ClassRoomMainRoute extends _i7.PageRouteInfo<void> {
-  const ClassRoomMainRoute({List<_i7.PageRouteInfo>? children})
+/// [_i1.ClassRoomDetailPage]
+class ClassRoomDetailRoute extends _i8.PageRouteInfo<ClassRoomDetailRouteArgs> {
+  ClassRoomDetailRoute({
+    _i9.Key? key,
+    required _i10.Classroom? data,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+          ClassRoomDetailRoute.name,
+          args: ClassRoomDetailRouteArgs(
+            key: key,
+            data: data,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ClassRoomDetailRoute';
+
+  static const _i8.PageInfo<ClassRoomDetailRouteArgs> page =
+      _i8.PageInfo<ClassRoomDetailRouteArgs>(name);
+}
+
+class ClassRoomDetailRouteArgs {
+  const ClassRoomDetailRouteArgs({
+    this.key,
+    required this.data,
+  });
+
+  final _i9.Key? key;
+
+  final _i10.Classroom? data;
+
+  @override
+  String toString() {
+    return 'ClassRoomDetailRouteArgs{key: $key, data: $data}';
+  }
+}
+
+/// generated route for
+/// [_i2.ClassRoomMainPage]
+class ClassRoomMainRoute extends _i8.PageRouteInfo<void> {
+  const ClassRoomMainRoute({List<_i8.PageRouteInfo>? children})
       : super(
           ClassRoomMainRoute.name,
           initialChildren: children,
@@ -89,13 +141,13 @@ class ClassRoomMainRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'ClassRoomMainRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i7.PageRouteInfo<void> {
-  const HomeRoute({List<_i7.PageRouteInfo>? children})
+/// [_i3.HomePage]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -103,16 +155,16 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.StudentDetailPage]
-class StudentDetailRoute extends _i7.PageRouteInfo<StudentDetailRouteArgs> {
+/// [_i4.StudentDetailPage]
+class StudentDetailRoute extends _i8.PageRouteInfo<StudentDetailRouteArgs> {
   StudentDetailRoute({
-    _i8.Key? key,
-    required _i9.Student? data,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i11.Student? data,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           StudentDetailRoute.name,
           args: StudentDetailRouteArgs(
@@ -124,8 +176,8 @@ class StudentDetailRoute extends _i7.PageRouteInfo<StudentDetailRouteArgs> {
 
   static const String name = 'StudentDetailRoute';
 
-  static const _i7.PageInfo<StudentDetailRouteArgs> page =
-      _i7.PageInfo<StudentDetailRouteArgs>(name);
+  static const _i8.PageInfo<StudentDetailRouteArgs> page =
+      _i8.PageInfo<StudentDetailRouteArgs>(name);
 }
 
 class StudentDetailRouteArgs {
@@ -134,9 +186,9 @@ class StudentDetailRouteArgs {
     required this.data,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.Student? data;
+  final _i11.Student? data;
 
   @override
   String toString() {
@@ -145,9 +197,9 @@ class StudentDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i4.StudentsMainPage]
-class StudentsMainRoute extends _i7.PageRouteInfo<void> {
-  const StudentsMainRoute({List<_i7.PageRouteInfo>? children})
+/// [_i5.StudentsMainPage]
+class StudentsMainRoute extends _i8.PageRouteInfo<void> {
+  const StudentsMainRoute({List<_i8.PageRouteInfo>? children})
       : super(
           StudentsMainRoute.name,
           initialChildren: children,
@@ -155,16 +207,16 @@ class StudentsMainRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'StudentsMainRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.SubjectDetailPage]
-class SubjectDetailRoute extends _i7.PageRouteInfo<SubjectDetailRouteArgs> {
+/// [_i6.SubjectDetailPage]
+class SubjectDetailRoute extends _i8.PageRouteInfo<SubjectDetailRouteArgs> {
   SubjectDetailRoute({
-    _i8.Key? key,
-    required _i10.Subject? data,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i12.Subject? data,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           SubjectDetailRoute.name,
           args: SubjectDetailRouteArgs(
@@ -176,8 +228,8 @@ class SubjectDetailRoute extends _i7.PageRouteInfo<SubjectDetailRouteArgs> {
 
   static const String name = 'SubjectDetailRoute';
 
-  static const _i7.PageInfo<SubjectDetailRouteArgs> page =
-      _i7.PageInfo<SubjectDetailRouteArgs>(name);
+  static const _i8.PageInfo<SubjectDetailRouteArgs> page =
+      _i8.PageInfo<SubjectDetailRouteArgs>(name);
 }
 
 class SubjectDetailRouteArgs {
@@ -186,9 +238,9 @@ class SubjectDetailRouteArgs {
     required this.data,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i10.Subject? data;
+  final _i12.Subject? data;
 
   @override
   String toString() {
@@ -197,9 +249,9 @@ class SubjectDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i6.SubjectMainPage]
-class SubjectMainRoute extends _i7.PageRouteInfo<void> {
-  const SubjectMainRoute({List<_i7.PageRouteInfo>? children})
+/// [_i7.SubjectMainPage]
+class SubjectMainRoute extends _i8.PageRouteInfo<void> {
+  const SubjectMainRoute({List<_i8.PageRouteInfo>? children})
       : super(
           SubjectMainRoute.name,
           initialChildren: children,
@@ -207,5 +259,5 @@ class SubjectMainRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'SubjectMainRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
