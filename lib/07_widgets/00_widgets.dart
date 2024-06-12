@@ -1,9 +1,13 @@
-import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget wwTile({required Function() onTap, required Student? data}) {
+Widget wwTile({
+  required String title,
+  required String subtitle,
+  required String trailing,
+  required Function() onTap,
+}) {
   return InkWell(
     onTap: onTap,
     child: ClipRRect(
@@ -11,9 +15,9 @@ Widget wwTile({required Function() onTap, required Student? data}) {
       child: ColoredBox(
           color: const Color(0xffD1D1D1),
           child: ListTile(
-            title: WWText(data?.name ?? '', textSize: TextSize.fw400px17),
-            subtitle: WWText(data?.email ?? '', textSize: TextSize.fw400px13),
-            trailing: WWText('Age ${data?.age}', textSize: TextSize.fw400px17),
+            title: WWText(title, textSize: TextSize.fw400px17),
+            subtitle: WWText(subtitle, textSize: TextSize.fw400px13),
+            trailing: WWText(trailing, textSize: TextSize.fw400px17),
           )),
     ),
   );

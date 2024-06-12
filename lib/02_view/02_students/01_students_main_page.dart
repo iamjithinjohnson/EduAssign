@@ -58,7 +58,9 @@ class StudentsListViewWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           Student? data = vmStudent.studentResponse.data?.students?[index];
           return wwTile(
-              data: data,
+              title: data?.name ?? '',
+              subtitle: data?.email ?? '',
+              trailing: 'Age ${data?.age}',
               onTap: () {
                 customPrint(content: data?.age ?? '');
                 context.router.push(StudentDetailRoute(data: data));
