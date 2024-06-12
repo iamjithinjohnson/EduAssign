@@ -12,6 +12,7 @@ _$ClassroomImpl _$$ClassroomImplFromJson(Map<String, dynamic> json) =>
       layout: json['layout'] as String?,
       name: json['name'] as String?,
       size: (json['size'] as num?)?.toInt(),
+      subject: json['subject'] as String?,
     );
 
 Map<String, dynamic> _$$ClassroomImplToJson(_$ClassroomImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$ClassroomImplToJson(_$ClassroomImpl instance) =>
       'layout': instance.layout,
       'name': instance.name,
       'size': instance.size,
+      'subject': instance.subject,
     };

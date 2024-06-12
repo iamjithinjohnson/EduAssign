@@ -24,6 +24,7 @@ mixin _$Classroom {
   String? get layout => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
+  String? get subject => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,8 @@ abstract class $ClassroomCopyWith<$Res> {
   factory $ClassroomCopyWith(Classroom value, $Res Function(Classroom) then) =
       _$ClassroomCopyWithImpl<$Res, Classroom>;
   @useResult
-  $Res call({int? id, String? layout, String? name, int? size});
+  $Res call(
+      {int? id, String? layout, String? name, int? size, String? subject});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
     Object? layout = freezed,
     Object? name = freezed,
     Object? size = freezed,
+    Object? subject = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -74,6 +77,10 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      subject: freezed == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +93,8 @@ abstract class _$$ClassroomImplCopyWith<$Res>
       __$$ClassroomImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? layout, String? name, int? size});
+  $Res call(
+      {int? id, String? layout, String? name, int? size, String? subject});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$ClassroomImplCopyWithImpl<$Res>
     Object? layout = freezed,
     Object? name = freezed,
     Object? size = freezed,
+    Object? subject = freezed,
   }) {
     return _then(_$ClassroomImpl(
       id: freezed == id
@@ -122,6 +131,10 @@ class __$$ClassroomImplCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      subject: freezed == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -129,7 +142,7 @@ class __$$ClassroomImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ClassroomImpl implements _Classroom {
-  _$ClassroomImpl({this.id, this.layout, this.name, this.size});
+  _$ClassroomImpl({this.id, this.layout, this.name, this.size, this.subject});
 
   factory _$ClassroomImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClassroomImplFromJson(json);
@@ -142,10 +155,12 @@ class _$ClassroomImpl implements _Classroom {
   final String? name;
   @override
   final int? size;
+  @override
+  final String? subject;
 
   @override
   String toString() {
-    return 'Classroom(id: $id, layout: $layout, name: $name, size: $size)';
+    return 'Classroom(id: $id, layout: $layout, name: $name, size: $size, subject: $subject)';
   }
 
   @override
@@ -156,12 +171,13 @@ class _$ClassroomImpl implements _Classroom {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.size, size) || other.size == size));
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.subject, subject) || other.subject == subject));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, layout, name, size);
+  int get hashCode => Object.hash(runtimeType, id, layout, name, size, subject);
 
   @JsonKey(ignore: true)
   @override
@@ -182,7 +198,8 @@ abstract class _Classroom implements Classroom {
       {final int? id,
       final String? layout,
       final String? name,
-      final int? size}) = _$ClassroomImpl;
+      final int? size,
+      final String? subject}) = _$ClassroomImpl;
 
   factory _Classroom.fromJson(Map<String, dynamic> json) =
       _$ClassroomImpl.fromJson;
@@ -195,6 +212,8 @@ abstract class _Classroom implements Classroom {
   String? get name;
   @override
   int? get size;
+  @override
+  String? get subject;
   @override
   @JsonKey(ignore: true)
   _$$ClassroomImplCopyWith<_$ClassroomImpl> get copyWith =>

@@ -10,6 +10,7 @@ class Classroom with _$Classroom {
     String? layout,
     String? name,
     int? size,
+    String? subject,
   }) = _Classroom;
 
   factory Classroom.fromJson(Map<String, dynamic> json) =>

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
+import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,9 +25,10 @@ class ClassRoomDetailPage extends StatelessWidget {
               child: WWText(data?.name ?? '', textSize: TextSize.fw700px22)),
           sized0hx20,
           wwTile(
-              title: data?.name ?? '',
-              subtitle: data?.layout ?? '',
+              title: data?.subject ?? 'Add Subject',
+              // subtitle: data?.layout ?? '',
               trailing: '',
+              trailingW: const CmButton(width: 120, text: 'Add'),
               onTap: () {}),
           sized0hx20,
           Flexible(child: ClassGridView(data: data))
