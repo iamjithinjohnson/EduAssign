@@ -32,11 +32,10 @@ class HttpService {
     var baseUrl = dotenv.env['BASE_URL'];
     var apiToken = dotenv.env['API_KEY'];
     try {
-      final url = "$baseUrl/$apiUrl/?$apiToken";
+      final url = "$baseUrl/$apiUrl?$apiToken";
       customPrint(content: url, name: "url");
       if (payLoad != null) customPrint(content: payLoad, name: "Payload");
-      final Response response;
-      response = await httpSwitchMethod(method, client, url, payLoad);
+      Response response = await httpSwitchMethod(method, client, url, payLoad);
       customPrint(content: response.statusCode, name: "Status Code");
       customPrint(content: response.body, name: "Response");
 
@@ -44,10 +43,9 @@ class HttpService {
           response.statusCode == HttpStatus.created) {
         return Right(jsonDecode(response.body));
       } else {
-        customPrint(content: 'server error');
         return Left({
           const MainFailure.clientFailure():
-              jsonDecode(response.body)["detail"] ??
+              jsonDecode(response.body)["error"] ??
                   jsonDecode(response.body)["app_data"]
         });
       }

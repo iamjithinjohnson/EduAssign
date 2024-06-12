@@ -17,6 +17,7 @@ class CmButton extends StatelessWidget {
     this.icon,
     this.loading = false,
     this.loadingColor,
+    this.textColor,
   });
 
   final IconData? icon;
@@ -26,6 +27,8 @@ class CmButton extends StatelessWidget {
   final String? text;
   final Widget? widget;
   final Color? color;
+  final Color? textColor;
+
   final double? height;
   final double? width;
   final double? borderRadius;
@@ -75,7 +78,7 @@ class CmButton extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: buttonTextStyle ??
                             TextStyle(
-                              color: Colors.white,
+                              color: textColor ?? Colors.white,
                               fontSize: 12.sp,
                             ),
                       ),

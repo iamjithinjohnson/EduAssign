@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
+import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
@@ -11,7 +12,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 @RoutePage()
 class SubjectMainPage extends StatelessWidget {
-  const SubjectMainPage({super.key});
+  final int? classRoomID;
+  const SubjectMainPage({super.key, this.classRoomID});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class SubjectMainPage extends StatelessWidget {
                               true,
                       onTap: () => vmSubject.fetchSubjectApi(),
                       onRefresh: () => vmSubject.fetchSubjectApi(),
-                      child: const SubjectListViewWidget()));
+                      child: SubjectListViewWidget(classRoomID: classRoomID)));
             }),
           ],
         ),
@@ -47,7 +49,8 @@ class SubjectMainPage extends StatelessWidget {
 }
 
 class SubjectListViewWidget extends StatelessWidget {
-  const SubjectListViewWidget({super.key});
+  final int? classRoomID;
+  const SubjectListViewWidget({super.key, this.classRoomID});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +63,16 @@ class SubjectListViewWidget extends StatelessWidget {
               title: data?.name ?? '',
               subtitle: data?.teacher ?? '',
               trailing: 'Credit : ${data?.credits}',
-              onTap: () {
+              onTap: () async {
+                if (classRoomID != null && data?.id != null) {
+                  await vmClassRoom.updateClassRoomSubjectApi(context,
+                      subjectId: data!.id!, classId: classRoomID!);
+
+                  // vmClassRoom.updateClassRoomSubjectApi(context,
+                  //     subjectId: 100, classId: 100);
+
+                  return;
+                }
                 context.router.push(SubjectDetailRoute(data: data));
               });
         });

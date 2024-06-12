@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
+import 'package:edu_assign/02_view/03_subjects/01_subject_main_page.dart';
+import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
+import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
+import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
@@ -28,8 +32,17 @@ class ClassRoomDetailPage extends StatelessWidget {
               title: data?.subject ?? 'Add Subject',
               // subtitle: data?.layout ?? '',
               trailing: '',
-              trailingW: const CmButton(width: 120, text: 'Add'),
-              onTap: () {}),
+              trailingW: const CmButton(
+                width: 120,
+                text: 'ADD',
+                color: AppColors.cLightGreen,
+                textColor: AppColors.cGreen,
+              ),
+              onTap: () {
+                if (data?.id != null) {
+                  context.router.push(SubjectMainRoute(classRoomID: data!.id!));
+                }
+              }),
           sized0hx20,
           Flexible(child: ClassGridView(data: data))
         ]),
@@ -63,7 +76,7 @@ class ClassGridView extends StatelessWidget {
                       BoxDecoration(border: Border.all(color: Colors.black)),
                   child: Image.asset('assets/svg/chairRight.png', scale: 2))
               : index % 3 == 1
-                  ? const ColoredBox(color: Colors.grey)
+                  ? const ColoredBox(color: AppColors.cGrey)
                   : index % 3 == 0
                       ? classChar('assets/svg/chairRight.png')
                       : classChar('assets/svg/chairLeft.png');

@@ -8,6 +8,9 @@ import 'package:injectable/injectable.dart';
 abstract class IClassRoomRepo {
   Future<Either<Map<MainFailure, dynamic>, ClassRoomModel>>
       fetchClassRoomRepo();
+
+  Future<Either<Map<MainFailure, dynamic>, String>> classRoomSubjectUpdateRepo(
+      {required int subjectId, required int classId});
 }
 
 @LazySingleton(as: IClassRoomRepo)
@@ -21,5 +24,15 @@ class ClassRoomRepo implements IClassRoomRepo {
     final res = await httpService.request(apiUrl: EndPoints.classroomApi);
     return await res.fold(
         (l) => Left(l), (r) => Right(ClassRoomModel.fromJson(r)));
+  }
+
+  @override
+  Future<Either<Map<MainFailure, dynamic>, String>> classRoomSubjectUpdateRepo(
+      {required int subjectId, required int classId}) async {
+    final res = await httpService.request(
+        method: HttpMethod.patch,
+        apiUrl: '${EndPoints.classroomApi}/$classId',
+        payLoad: {"subject": subjectId.toString()});
+    return await res.fold((l) => Left(l), (r) => const Right('success'));
   }
 }

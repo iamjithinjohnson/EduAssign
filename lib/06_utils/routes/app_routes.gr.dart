@@ -84,9 +84,14 @@ abstract class $AppRouter extends _i8.RootStackRouter {
       );
     },
     SubjectMainRoute.name: (routeData) {
+      final args = routeData.argsAs<SubjectMainRouteArgs>(
+          orElse: () => const SubjectMainRouteArgs());
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.SubjectMainPage(),
+        child: _i7.SubjectMainPage(
+          key: args.key,
+          classRoomID: args.classRoomID,
+        ),
       );
     },
   };
@@ -250,14 +255,38 @@ class SubjectDetailRouteArgs {
 
 /// generated route for
 /// [_i7.SubjectMainPage]
-class SubjectMainRoute extends _i8.PageRouteInfo<void> {
-  const SubjectMainRoute({List<_i8.PageRouteInfo>? children})
-      : super(
+class SubjectMainRoute extends _i8.PageRouteInfo<SubjectMainRouteArgs> {
+  SubjectMainRoute({
+    _i9.Key? key,
+    int? classRoomID,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           SubjectMainRoute.name,
+          args: SubjectMainRouteArgs(
+            key: key,
+            classRoomID: classRoomID,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SubjectMainRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i8.PageInfo<SubjectMainRouteArgs> page =
+      _i8.PageInfo<SubjectMainRouteArgs>(name);
+}
+
+class SubjectMainRouteArgs {
+  const SubjectMainRouteArgs({
+    this.key,
+    this.classRoomID,
+  });
+
+  final _i9.Key? key;
+
+  final int? classRoomID;
+
+  @override
+  String toString() {
+    return 'SubjectMainRouteArgs{key: $key, classRoomID: $classRoomID}';
+  }
 }

@@ -25,6 +25,23 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
     });
   }
 
+  late final _$subjectUpdateResponseAtom = Atom(
+      name: 'ClassRoomViewModelBase.subjectUpdateResponse', context: context);
+
+  @override
+  ApiResponse<String> get subjectUpdateResponse {
+    _$subjectUpdateResponseAtom.reportRead();
+    return super.subjectUpdateResponse;
+  }
+
+  @override
+  set subjectUpdateResponse(ApiResponse<String> value) {
+    _$subjectUpdateResponseAtom.reportWrite(value, super.subjectUpdateResponse,
+        () {
+      super.subjectUpdateResponse = value;
+    });
+  }
+
   late final _$fetchClassRoomApiAsyncAction =
       AsyncAction('ClassRoomViewModelBase.fetchClassRoomApi', context: context);
 
@@ -33,10 +50,23 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
     return _$fetchClassRoomApiAsyncAction.run(() => super.fetchClassRoomApi());
   }
 
+  late final _$updateClassRoomSubjectApiAsyncAction = AsyncAction(
+      'ClassRoomViewModelBase.updateClassRoomSubjectApi',
+      context: context);
+
+  @override
+  Future<void> updateClassRoomSubjectApi(BuildContext context,
+      {required int subjectId, required int classId}) {
+    return _$updateClassRoomSubjectApiAsyncAction.run(() => super
+        .updateClassRoomSubjectApi(context,
+            subjectId: subjectId, classId: classId));
+  }
+
   @override
   String toString() {
     return '''
-classRoomResponse: ${classRoomResponse}
+classRoomResponse: ${classRoomResponse},
+subjectUpdateResponse: ${subjectUpdateResponse}
     ''';
   }
 }
