@@ -3,6 +3,7 @@ import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 @RoutePage()
 class StudentDetailPage extends StatelessWidget {
@@ -25,12 +26,20 @@ class StudentDetailPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3e8FiBhs7r9nlJ9lesBFKnHMNX73XTeYy2l3tNhXIQIV7mt604dvp_L8tUVqLMaxWmxc&usqp=CAU',
+                    ))),
+                sized0hx20,
                 WWText(data?.name ?? '', textSize: TextSize.fw400px22),
-                sized0hx05,
+                sized0hx10,
                 WWText('Age ${data?.age} ', textSize: TextSize.fw400px22),
-                sized0hx05,
+                sized0hx10,
                 WWText(data?.email ?? '', textSize: TextSize.fw400px13),
-                sized0hx05,
+                sized0hx10,
               ],
             ),
           ),
