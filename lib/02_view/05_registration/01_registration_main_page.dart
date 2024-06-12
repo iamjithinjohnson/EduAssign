@@ -3,6 +3,7 @@ import 'package:edu_assign/01_model/05_registration/registration_model/registrat
 import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
+import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:edu_assign/07_widgets/ww_response_handler.dart';
@@ -47,7 +48,8 @@ class RegistrationMainPage extends StatelessWidget {
               color: AppColors.cLightBlue,
               textColor: AppColors.cBlue,
               width: ScreenUtil().screenWidth / 2,
-              onPressed: () {},
+              onPressed: () =>
+                  context.router.pushNamed(RouteNames.newRegistationPage),
             ),
             sized0hx30,
           ],

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
 import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
+import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
@@ -13,7 +14,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 @RoutePage()
 class SubjectMainPage extends StatelessWidget {
   final int? classRoomID;
-  const SubjectMainPage({super.key, this.classRoomID});
+  final bool isFromNewRegisgter;
+  const SubjectMainPage(
+      {super.key, this.classRoomID, this.isFromNewRegisgter = false});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,9 @@ class SubjectMainPage extends StatelessWidget {
                               true,
                       onTap: () => vmSubject.fetchSubjectApi(),
                       onRefresh: () => vmSubject.fetchSubjectApi(),
-                      child: SubjectListViewWidget(classRoomID: classRoomID)));
+                      child: SubjectListViewWidget(
+                          classRoomID: classRoomID,
+                          isFromNewRegisgter: isFromNewRegisgter)));
             }),
           ],
         ),
@@ -49,8 +54,11 @@ class SubjectMainPage extends StatelessWidget {
 }
 
 class SubjectListViewWidget extends StatelessWidget {
+  final bool isFromNewRegisgter;
+
   final int? classRoomID;
-  const SubjectListViewWidget({super.key, this.classRoomID});
+  const SubjectListViewWidget(
+      {super.key, this.classRoomID, required this.isFromNewRegisgter});
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +75,12 @@ class SubjectListViewWidget extends StatelessWidget {
                 if (classRoomID != null && data?.id != null) {
                   await vmClassRoom.updateClassRoomSubjectApi(context,
                       subjectId: data!.id!, classId: classRoomID!);
+                  return;
+                }
 
-                  // vmClassRoom.updateClassRoomSubjectApi(context,
-                  //     subjectId: 100, classId: 100);
-
+                if (isFromNewRegisgter && data != null) {
+                  vmRegistration.subject = data;
+                  Navigator.pop(context);
                   return;
                 }
                 context.router.push(SubjectDetailRoute(data: data));

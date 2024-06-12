@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/02_students/student_model/student.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
+import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
@@ -11,7 +12,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 @RoutePage()
 class StudentsMainPage extends StatelessWidget {
-  const StudentsMainPage({super.key});
+  final bool isFromNewRegisgter;
+  const StudentsMainPage({super.key, this.isFromNewRegisgter = false});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,8 @@ class StudentsMainPage extends StatelessWidget {
                               true,
                       onTap: () => vmStudent.fetchStudentsApi(),
                       onRefresh: () => vmStudent.fetchStudentsApi(),
-                      child: const StudentsListViewWidget()));
+                      child: StudentsListViewWidget(
+                          isFromNewRegisgter: isFromNewRegisgter)));
             }),
           ],
         ),
@@ -48,7 +51,8 @@ class StudentsMainPage extends StatelessWidget {
 }
 
 class StudentsListViewWidget extends StatelessWidget {
-  const StudentsListViewWidget({super.key});
+  final bool isFromNewRegisgter;
+  const StudentsListViewWidget({super.key, required this.isFromNewRegisgter});
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +66,11 @@ class StudentsListViewWidget extends StatelessWidget {
               subtitle: data?.email ?? '',
               trailing: 'Age ${data?.age}',
               onTap: () {
+                if (isFromNewRegisgter && data != null) {
+                  vmRegistration.student = data;
+                  Navigator.pop(context);
+                  return;
+                }
                 customPrint(content: data?.age ?? '');
                 context.router.push(StudentDetailRoute(data: data));
               });

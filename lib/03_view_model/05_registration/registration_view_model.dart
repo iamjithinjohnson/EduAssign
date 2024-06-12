@@ -1,3 +1,5 @@
+import 'package:edu_assign/01_model/02_students/student_model/student.dart';
+import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
 import 'package:edu_assign/01_model/05_registration/registration_model/registration_model.dart';
 import 'package:edu_assign/04_respository/05_registration/registration_repo.dart';
 import 'package:edu_assign/06_utils/api_response/api_response.dart';
@@ -18,6 +20,12 @@ class RegistrationViewModel extends RegistrationViewModelBase
 abstract class RegistrationViewModelBase with Store {
   final IRegistrationRepo iRegistrationRepo;
   RegistrationViewModelBase(this.iRegistrationRepo);
+
+  @observable
+  Student? student;
+
+  @observable
+  Subject? subject;
 
   @observable
   ApiResponse<RegistrationModel> registrationResponse =

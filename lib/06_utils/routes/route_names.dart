@@ -7,4 +7,5 @@ class RouteNames {
   static const String classRoomPage = '/class_room_page';
   static const String classRoomDetailPage = '/class_room_detail_page';
   static const String registationMainPage = '/registration_main_page';
+  static const String newRegistationPage = '/new_registration_page';
 }

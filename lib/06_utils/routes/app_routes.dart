@@ -38,5 +38,9 @@ class AppRouter extends $AppRouter {
           page: RegistrationMainRoute.page,
           path: RouteNames.registationMainPage,
         ),
+        AutoRoute(
+          page: NewRegistrationRoute.page,
+          path: RouteNames.newRegistationPage,
+        ),
       ];
 }

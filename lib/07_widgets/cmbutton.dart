@@ -78,9 +78,9 @@ class CmButton extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: buttonTextStyle ??
                             TextStyle(
-                              color: textColor ?? Colors.white,
-                              fontSize: 12.sp,
-                            ),
+                                color: textColor ?? Colors.white,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
