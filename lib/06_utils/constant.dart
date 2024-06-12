@@ -1,3 +1,4 @@
+import 'package:edu_assign/06_utils/app_images.dart';
 import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,25 +33,25 @@ void customPrint({String? name, required dynamic content}) {
 List<Map<String, dynamic>> homeButtons = [
   {
     "text": "Students",
-    "asset": "assets/svg/hat.svg",
+    "asset": AppImages.hat,
     "color": const Color(0xffAAC9BF),
     "navigate": RouteNames.studentPage
   },
   {
     "text": "Subjects",
-    "asset": "assets/svg/book.svg",
+    "asset": AppImages.book,
     "color": const Color(0xffD8EBFD),
     "navigate": RouteNames.subjectPage
   },
   {
     "text": "Class Rooms",
-    "asset": "assets/svg/door.svg",
+    "asset": AppImages.door,
     "color": const Color(0xffFFE0DD),
     "navigate": RouteNames.classRoomPage
   },
   {
     "text": "Registration",
-    "asset": "assets/svg/pencil.svg",
+    "asset": AppImages.pencil,
     "color": const Color(0xffFFF3D9),
     "navigate": RouteNames.subjectPage
   }

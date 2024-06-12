@@ -1,3 +1,4 @@
+import 'package:edu_assign/06_utils/app_images.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,9 +22,8 @@ class AppbarHome extends StatelessWidget {
         ),
         IconButton(
           icon: press
-              ? SvgPicture.asset('assets/svg/menu.svg')
-              : SvgPicture.asset(
-                  'assets/svg/menu1.svg'), //  const Icon(Icons.menu),
+              ? SvgPicture.asset(AppImages.menu)
+              : SvgPicture.asset(AppImages.menu1), //  const Icon(Icons.menu),
           onPressed: onPressed,
         ),
       ],

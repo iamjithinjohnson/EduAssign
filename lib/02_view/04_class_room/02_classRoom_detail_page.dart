@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
+import 'package:edu_assign/06_utils/app_images.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
 class ClassRoomDetailPage extends StatelessWidget {
@@ -21,7 +23,6 @@ class ClassRoomDetailPage extends StatelessWidget {
           Align(
               alignment: Alignment.topCenter,
               child: WWText(data?.name ?? '', textSize: TextSize.fw700px22)),
-
           Flexible(
             child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -34,17 +35,9 @@ class ClassRoomDetailPage extends StatelessWidget {
                   return DecoratedBox(
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)),
-                      child: Icon(Icons.person));
+                      child: Image.asset(AppImages.chairLeft, scale: 2));
                 }),
           )
-          // Expanded(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       sized0hx10,
-          //     ],
-          //   ),
-          // ),
         ]),
       )),
     );
