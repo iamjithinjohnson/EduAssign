@@ -79,7 +79,9 @@ class HttpService {
     MultipartRequest request = MultipartRequest(method!, Uri.parse(url));
     customPrint(content: url, name: "multiPart url");
 
-    return tryCatch(null, () async {
+    customPrint(content: data.toString());
+
+    try {
       request.headers.addAll({
         'Accept': 'application/json',
         'Content-Type': 'multipart/form-data',
@@ -112,31 +114,22 @@ class HttpService {
                   jsonDecode(response.body)["app_data"]
         });
       }
-    });
-  }
-}
-
-Future<Either<Map<MainFailure, dynamic>, dynamic>> tryCatch(
-    Client? client,
-    Future<Either<Map<MainFailure, dynamic>, dynamic>> Function()
-        function) async {
-  try {
-    return function();
-  } on FormatException catch (_) {
-    customPrint(content: 'format exception catched');
-    return Left({const MainFailure.clientFailure(): null});
-  } on HttpException catch (_) {
-    return Left({const MainFailure.clientFailure(): null});
-  } on TimeoutException catch (_) {
-    return Left({const MainFailure.timeout(): null});
-  } on SocketException catch (_) {
-    return Left({const MainFailure.networkFailure(): null});
-  } catch (e) {
-    customPrint(content: 'error catched');
-    debugPrint(e.toString());
-    return Left({const MainFailure.clientFailure(): null});
-  } finally {
-    // client?.close();
+    } on FormatException catch (_) {
+      customPrint(content: 'format exception catched');
+      return Left({const MainFailure.clientFailure(): null});
+    } on HttpException catch (_) {
+      return Left({const MainFailure.clientFailure(): null});
+    } on TimeoutException catch (_) {
+      return Left({const MainFailure.timeout(): null});
+    } on SocketException catch (_) {
+      return Left({const MainFailure.networkFailure(): null});
+    } catch (e) {
+      customPrint(content: 'error catched');
+      debugPrint(e.toString());
+      return Left({const MainFailure.clientFailure(): null});
+    } finally {
+      // client?.close();
+    }
   }
 }
 

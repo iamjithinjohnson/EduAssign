@@ -20,9 +20,6 @@ class SubjectMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      vmSubject.fetchSubjectApi();
-    });
     return wwHeader(
       child: Column(
         children: [

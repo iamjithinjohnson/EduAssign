@@ -17,10 +17,6 @@ class StudentsMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      vmStudent.fetchStudentsApi();
-    });
-
     return wwHeader(
       child: Column(
         children: [

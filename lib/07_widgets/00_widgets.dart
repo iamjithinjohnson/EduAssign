@@ -12,6 +12,7 @@ Widget wwTile({
   String? subtitle,
   String? trailing,
   Widget? trailingW,
+  bool isThreeLine = false,
   required Function() onTap,
 }) {
   return InkWell(
@@ -25,6 +26,7 @@ Widget wwTile({
             subtitle: subtitle == null
                 ? null
                 : WWText(subtitle, textSize: TextSize.fw400px13),
+            isThreeLine: isThreeLine,
             trailing: trailingW ??
                 WWText(trailing ?? '', textSize: TextSize.fw400px17),
           )),

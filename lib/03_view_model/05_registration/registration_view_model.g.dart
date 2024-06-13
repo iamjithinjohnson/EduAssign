@@ -41,6 +41,38 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
     });
   }
 
+  late final _$detailStudentAtom =
+      Atom(name: 'RegistrationViewModelBase.detailStudent', context: context);
+
+  @override
+  Student? get detailStudent {
+    _$detailStudentAtom.reportRead();
+    return super.detailStudent;
+  }
+
+  @override
+  set detailStudent(Student? value) {
+    _$detailStudentAtom.reportWrite(value, super.detailStudent, () {
+      super.detailStudent = value;
+    });
+  }
+
+  late final _$detailSubjectAtom =
+      Atom(name: 'RegistrationViewModelBase.detailSubject', context: context);
+
+  @override
+  Subject? get detailSubject {
+    _$detailSubjectAtom.reportRead();
+    return super.detailSubject;
+  }
+
+  @override
+  set detailSubject(Subject? value) {
+    _$detailSubjectAtom.reportWrite(value, super.detailSubject, () {
+      super.detailSubject = value;
+    });
+  }
+
   late final _$registrationResponseAtom = Atom(
       name: 'RegistrationViewModelBase.registrationResponse', context: context);
 
@@ -76,6 +108,22 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
     });
   }
 
+  late final _$deleteRegResponseAtom = Atom(
+      name: 'RegistrationViewModelBase.deleteRegResponse', context: context);
+
+  @override
+  ApiResponse<String> get deleteRegResponse {
+    _$deleteRegResponseAtom.reportRead();
+    return super.deleteRegResponse;
+  }
+
+  @override
+  set deleteRegResponse(ApiResponse<String> value) {
+    _$deleteRegResponseAtom.reportWrite(value, super.deleteRegResponse, () {
+      super.deleteRegResponse = value;
+    });
+  }
+
   late final _$fetchRegistrationApiAsyncAction = AsyncAction(
       'RegistrationViewModelBase.fetchRegistrationApi',
       context: context);
@@ -98,13 +146,52 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
             subjectId: subjectId, studentId: studentId));
   }
 
+  late final _$deleteRegistrationApiAsyncAction = AsyncAction(
+      'RegistrationViewModelBase.deleteRegistrationApi',
+      context: context);
+
+  @override
+  Future<void> deleteRegistrationApi(BuildContext context,
+      {required int regId}) {
+    return _$deleteRegistrationApiAsyncAction
+        .run(() => super.deleteRegistrationApi(context, regId: regId));
+  }
+
+  late final _$RegistrationViewModelBaseActionController =
+      ActionController(name: 'RegistrationViewModelBase', context: context);
+
+  @override
+  void fetchSingleStudent(int stdId) {
+    final _$actionInfo = _$RegistrationViewModelBaseActionController
+        .startAction(name: 'RegistrationViewModelBase.fetchSingleStudent');
+    try {
+      return super.fetchSingleStudent(stdId);
+    } finally {
+      _$RegistrationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void fetchSingleSubject(int subId) {
+    final _$actionInfo = _$RegistrationViewModelBaseActionController
+        .startAction(name: 'RegistrationViewModelBase.fetchSingleSubject');
+    try {
+      return super.fetchSingleSubject(subId);
+    } finally {
+      _$RegistrationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 student: ${student},
 subject: ${subject},
+detailStudent: ${detailStudent},
+detailSubject: ${detailSubject},
 registrationResponse: ${registrationResponse},
-newRegistrationResponse: ${newRegistrationResponse}
+newRegistrationResponse: ${newRegistrationResponse},
+deleteRegResponse: ${deleteRegResponse}
     ''';
   }
 }

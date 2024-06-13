@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:edu_assign/01_model/05_registration/registration_model/registration_model.dart';
 import 'package:edu_assign/05_services/http_service.dart';
+import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/end_points.dart';
 import 'package:edu_assign/06_utils/failure/main_failure.dart';
 import 'package:injectable/injectable.dart';
@@ -11,6 +12,9 @@ abstract class IRegistrationRepo {
 
   Future<Either<Map<MainFailure, dynamic>, String>> newRegistersRepo(
       {required int subjectId, required int studentId});
+
+  Future<Either<Map<MainFailure, dynamic>, String>> deleteRegistersRepo(
+      {required int regId});
 }
 
 @LazySingleton(as: IRegistrationRepo)
@@ -29,13 +33,19 @@ class RegistrationRepo implements IRegistrationRepo {
   @override
   Future<Either<Map<MainFailure, dynamic>, String>> newRegistersRepo(
       {required int subjectId, required int studentId}) async {
-    final res = await httpService.request(
-        method: HttpMethod.post,
+    customPrint(content: 'asdasd');
+    final res = await httpService.multipartRequest(
+        method: 'POST',
         apiUrl: EndPoints.registration,
-        payLoad: {
-          "subject": subjectId.toString(),
-          "student": studentId.toString(),
-        });
+        data: {"subject": subjectId, "student": studentId});
+    return await res.fold((l) => Left(l), (r) => const Right('success'));
+  }
+
+  @override
+  Future<Either<Map<MainFailure, dynamic>, String>> deleteRegistersRepo(
+      {required int regId}) async {
+    final res = await httpService.request(
+        method: HttpMethod.delete, apiUrl: "${EndPoints.registration}/$regId");
     return await res.fold((l) => Left(l), (r) => const Right('success'));
   }
 }
