@@ -24,7 +24,7 @@ mixin _$Classroom {
   String? get layout => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
-  String? get subject => throw _privateConstructorUsedError;
+  dynamic get subject => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $ClassroomCopyWith<$Res> {
       _$ClassroomCopyWithImpl<$Res, Classroom>;
   @useResult
   $Res call(
-      {int? id, String? layout, String? name, int? size, String? subject});
+      {int? id, String? layout, String? name, int? size, dynamic subject});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
       subject: freezed == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$ClassroomImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id, String? layout, String? name, int? size, String? subject});
+      {int? id, String? layout, String? name, int? size, dynamic subject});
 }
 
 /// @nodoc
@@ -134,7 +134,7 @@ class __$$ClassroomImplCopyWithImpl<$Res>
       subject: freezed == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
     ));
   }
 }
@@ -156,7 +156,7 @@ class _$ClassroomImpl implements _Classroom {
   @override
   final int? size;
   @override
-  final String? subject;
+  final dynamic subject;
 
   @override
   String toString() {
@@ -172,12 +172,13 @@ class _$ClassroomImpl implements _Classroom {
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.size, size) || other.size == size) &&
-            (identical(other.subject, subject) || other.subject == subject));
+            const DeepCollectionEquality().equals(other.subject, subject));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, layout, name, size, subject);
+  int get hashCode => Object.hash(runtimeType, id, layout, name, size,
+      const DeepCollectionEquality().hash(subject));
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +200,7 @@ abstract class _Classroom implements Classroom {
       final String? layout,
       final String? name,
       final int? size,
-      final String? subject}) = _$ClassroomImpl;
+      final dynamic subject}) = _$ClassroomImpl;
 
   factory _Classroom.fromJson(Map<String, dynamic> json) =
       _$ClassroomImpl.fromJson;
@@ -213,7 +214,7 @@ abstract class _Classroom implements Classroom {
   @override
   int? get size;
   @override
-  String? get subject;
+  dynamic get subject;
   @override
   @JsonKey(ignore: true)
   _$$ClassroomImplCopyWith<_$ClassroomImpl> get copyWith =>

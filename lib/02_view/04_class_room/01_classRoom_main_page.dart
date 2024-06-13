@@ -61,6 +61,9 @@ class ClassRoomListViewWidget extends StatelessWidget {
               subtitle: data?.layout ?? '',
               trailing: 'Seats : ${data?.size}',
               onTap: () {
+                if (data?.id != null) {
+                  vmClassRoom.classRoomDetailApi(classId: data!.id!);
+                }
                 context.router.push(ClassRoomDetailRoute(data: data));
               });
         });

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
 import 'package:edu_assign/02_view/03_subjects/01_subject_main_page.dart';
+import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
+import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
@@ -9,6 +11,7 @@ import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -28,21 +31,27 @@ class ClassRoomDetailPage extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: WWText(data?.name ?? '', textSize: TextSize.fw700px22)),
           sized0hx20,
-          wwTile(
-              title: data?.subject ?? 'Add Subject',
-              // subtitle: data?.layout ?? '',
-              trailing: '',
-              trailingW: const CmButton(
-                width: 120,
-                text: 'ADD',
-                color: AppColors.cLightGreen,
-                textColor: AppColors.cGreen,
-              ),
-              onTap: () {
-                if (data?.id != null) {
-                  context.router.push(SubjectMainRoute(classRoomID: data!.id!));
-                }
-              }),
+          Observer(builder: (context) {
+            return wwTile(
+                title: vmClassRoom.detailSubject?.name ?? 'Add Subject',
+                subtitle: vmClassRoom.detailSubject?.teacher,
+                trailingW: CmButton(
+                  loading: vmClassRoom.classDetailResponse.loading,
+                  width: 120,
+                  text: vmClassRoom.detailSubject?.name != null
+                      ? 'Change'
+                      : 'ADD',
+                  color: AppColors.cLightGreen,
+                  textColor: AppColors.cGreen,
+                  onPressed: () {
+                    if (data?.id != null) {
+                      context.router
+                          .push(SubjectMainRoute(classRoomID: data!.id!));
+                    }
+                  },
+                ),
+                onTap: () {});
+          }),
           sized0hx20,
           Flexible(child: ClassGridView(data: data))
         ]),

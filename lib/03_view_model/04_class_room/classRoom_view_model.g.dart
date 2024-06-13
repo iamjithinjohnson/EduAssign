@@ -42,12 +42,54 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
     });
   }
 
+  late final _$detailSubjectAtom =
+      Atom(name: 'ClassRoomViewModelBase.detailSubject', context: context);
+
+  @override
+  Subject? get detailSubject {
+    _$detailSubjectAtom.reportRead();
+    return super.detailSubject;
+  }
+
+  @override
+  set detailSubject(Subject? value) {
+    _$detailSubjectAtom.reportWrite(value, super.detailSubject, () {
+      super.detailSubject = value;
+    });
+  }
+
+  late final _$classDetailResponseAtom = Atom(
+      name: 'ClassRoomViewModelBase.classDetailResponse', context: context);
+
+  @override
+  ApiResponse<Classroom> get classDetailResponse {
+    _$classDetailResponseAtom.reportRead();
+    return super.classDetailResponse;
+  }
+
+  @override
+  set classDetailResponse(ApiResponse<Classroom> value) {
+    _$classDetailResponseAtom.reportWrite(value, super.classDetailResponse, () {
+      super.classDetailResponse = value;
+    });
+  }
+
   late final _$fetchClassRoomApiAsyncAction =
       AsyncAction('ClassRoomViewModelBase.fetchClassRoomApi', context: context);
 
   @override
   Future<void> fetchClassRoomApi() {
     return _$fetchClassRoomApiAsyncAction.run(() => super.fetchClassRoomApi());
+  }
+
+  late final _$classRoomDetailApiAsyncAction = AsyncAction(
+      'ClassRoomViewModelBase.classRoomDetailApi',
+      context: context);
+
+  @override
+  Future<void> classRoomDetailApi({required int classId}) {
+    return _$classRoomDetailApiAsyncAction
+        .run(() => super.classRoomDetailApi(classId: classId));
   }
 
   late final _$updateClassRoomSubjectApiAsyncAction = AsyncAction(
@@ -62,11 +104,27 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
             subjectId: subjectId, classId: classId));
   }
 
+  late final _$ClassRoomViewModelBaseActionController =
+      ActionController(name: 'ClassRoomViewModelBase', context: context);
+
+  @override
+  void getSubjectName(int subId) {
+    final _$actionInfo = _$ClassRoomViewModelBaseActionController.startAction(
+        name: 'ClassRoomViewModelBase.getSubjectName');
+    try {
+      return super.getSubjectName(subId);
+    } finally {
+      _$ClassRoomViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 classRoomResponse: ${classRoomResponse},
-subjectUpdateResponse: ${subjectUpdateResponse}
+subjectUpdateResponse: ${subjectUpdateResponse},
+detailSubject: ${detailSubject},
+classDetailResponse: ${classDetailResponse}
     ''';
   }
 }
