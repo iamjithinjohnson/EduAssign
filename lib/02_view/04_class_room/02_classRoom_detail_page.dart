@@ -1,12 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
-import 'package:edu_assign/02_view/03_subjects/01_subject_main_page.dart';
 import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
-import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
-import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
 import 'package:edu_assign/07_widgets/cmbutton.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';

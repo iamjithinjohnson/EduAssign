@@ -1,9 +1,7 @@
 import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
-import 'package:edu_assign/01_model/03_subjects/subject_model/subject_model.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/class_room_model.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
-import 'package:edu_assign/04_respository/03_subjects/subject_repo.dart';
 import 'package:edu_assign/04_respository/04_class_room/class_room_repo.dart';
 import 'package:edu_assign/06_utils/api_response/api_response.dart';
 import 'package:edu_assign/06_utils/injection/injection.dart';
