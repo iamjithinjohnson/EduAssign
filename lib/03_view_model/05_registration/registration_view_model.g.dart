@@ -95,13 +95,13 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
       context: context);
 
   @override
-  ApiResponse<String> get newRegistrationResponse {
+  ApiResponse<EduModel> get newRegistrationResponse {
     _$newRegistrationResponseAtom.reportRead();
     return super.newRegistrationResponse;
   }
 
   @override
-  set newRegistrationResponse(ApiResponse<String> value) {
+  set newRegistrationResponse(ApiResponse<EduModel> value) {
     _$newRegistrationResponseAtom
         .reportWrite(value, super.newRegistrationResponse, () {
       super.newRegistrationResponse = value;
@@ -134,16 +134,14 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
         .run(() => super.fetchRegistrationApi());
   }
 
-  late final _$updateClassRoomSubjectApiAsyncAction = AsyncAction(
-      'RegistrationViewModelBase.updateClassRoomSubjectApi',
-      context: context);
+  late final _$newRegisterApiAsyncAction =
+      AsyncAction('RegistrationViewModelBase.newRegisterApi', context: context);
 
   @override
-  Future<void> updateClassRoomSubjectApi(BuildContext context,
+  Future<void> newRegisterApi(BuildContext context,
       {required int subjectId, required int studentId}) {
-    return _$updateClassRoomSubjectApiAsyncAction.run(() => super
-        .updateClassRoomSubjectApi(context,
-            subjectId: subjectId, studentId: studentId));
+    return _$newRegisterApiAsyncAction.run(() => super
+        .newRegisterApi(context, subjectId: subjectId, studentId: studentId));
   }
 
   late final _$deleteRegistrationApiAsyncAction = AsyncAction(

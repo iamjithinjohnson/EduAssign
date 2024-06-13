@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:auto_route/auto_route.dart';
 import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/app_colors.dart';
@@ -52,30 +54,7 @@ class RegistrationDetailPage extends StatelessWidget {
               width: ScreenUtil().screenWidth / 2,
               loading: vmRegistration.deleteRegResponse.loading,
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CupertinoAlertDialog(
-                        title: const Text("Delete"),
-                        content: const Text("Do you want to delete"),
-                        actions: <Widget>[
-                          CupertinoDialogAction(
-                            child: const Text("No"),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: const Text("Yes"),
-                            onPressed: () async {
-                              Navigator.pop(context);
-                              await vmRegistration
-                                  .deleteRegistrationApi(context, regId: regId);
-                            },
-                          )
-                        ],
-                      );
-                    });
+                popup(context);
               },
             );
           }),
@@ -83,5 +62,34 @@ class RegistrationDetailPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<dynamic> popup(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: const Text("Delete"),
+            content: const Text("Do you want to delete"),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: const Text("No"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              CupertinoDialogAction(
+                child: const Text("Yes"),
+                onPressed: () async {
+                  await vmRegistration.deleteRegistrationApi(context,
+                      regId: regId);
+
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
   }
 }

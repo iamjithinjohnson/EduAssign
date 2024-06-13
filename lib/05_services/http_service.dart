@@ -110,7 +110,7 @@ class HttpService {
       } else {
         return Left({
           const MainFailure.clientFailure():
-              jsonDecode(response.body)["detail"] ??
+              jsonDecode(response.body)["error"] ??
                   jsonDecode(response.body)["app_data"]
         });
       }

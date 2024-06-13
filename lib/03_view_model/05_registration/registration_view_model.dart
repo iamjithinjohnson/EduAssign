@@ -73,10 +73,10 @@ abstract class RegistrationViewModelBase with Store {
   }
 
   @observable
-  ApiResponse<String> newRegistrationResponse = ApiResponse<String>();
+  ApiResponse<EduModel> newRegistrationResponse = ApiResponse<EduModel>();
 
   @action
-  Future<void> updateClassRoomSubjectApi(BuildContext context,
+  Future<void> newRegisterApi(BuildContext context,
       {required int subjectId, required int studentId}) async {
     try {
       newRegistrationResponse =
@@ -91,6 +91,12 @@ abstract class RegistrationViewModelBase with Store {
       }, (r) {
         subject = null;
         student = null;
+        registrationResponse = registrationResponse.copyWith(
+            data: registrationResponse.data?.copyWith(
+                registrations:
+                    registrationResponse.data?.registrations?.toList()
+                      ?..add(r)));
+        Navigator.pop(context);
         return ApiResponse(data: r);
       });
     } finally {
@@ -120,7 +126,6 @@ abstract class RegistrationViewModelBase with Store {
         reg?.removeWhere((element) => element.id == regId);
         regModel = regModel?.copyWith(registrations: reg);
         registrationResponse = registrationResponse.copyWith(data: regModel);
-        Navigator.pop(context);
         return ApiResponse(data: r);
       });
     } finally {

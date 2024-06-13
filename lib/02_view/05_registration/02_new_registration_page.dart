@@ -50,7 +50,7 @@ class NewRegistrationPage extends StatelessWidget {
                 int? stdId = vmRegistration.student?.id;
                 int? subId = vmRegistration.subject?.id;
                 if (stdId != null && subId != null) {
-                  vmRegistration.updateClassRoomSubjectApi(context,
+                  vmRegistration.newRegisterApi(context,
                       studentId: stdId, subjectId: subId);
                 } else {
                   popupErrorData(context,
