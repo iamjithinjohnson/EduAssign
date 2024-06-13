@@ -3,7 +3,7 @@ import 'package:edu_assign/03_view_model/05_registration/registration_view_model
 import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
-import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_Button.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,7 @@ class RegistrationDetailPage extends StatelessWidget {
           }),
           const Spacer(),
           Observer(builder: (context) {
-            return CmButton(
+            return WWButton(
               text: 'Delete Registration',
               color: AppColors.cRed,
               width: ScreenUtil().screenWidth / 2,

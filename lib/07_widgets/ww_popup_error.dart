@@ -1,6 +1,6 @@
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/failure/main_failure.dart';
-import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_Button.dart';
 import 'package:flutter/material.dart';
 
 popupErrorData(BuildContext context,
@@ -48,7 +48,7 @@ Widget wwErrorData(
           //     isFromPopUp == true ? TextSize.fw600px14 : TextSize.fw600px22,
           textAlign: TextAlign.center),
       sized0hx20,
-      CmButton(
+      WWButton(
         text: isFromPopUp == true ? 'Dismiss ' : 'Try Again',
         onPressed: onTap,
         // onTap: onTap,

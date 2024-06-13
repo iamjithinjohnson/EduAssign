@@ -2,8 +2,8 @@ import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CmButton extends StatelessWidget {
-  const CmButton({
+class WWButton extends StatelessWidget {
+  const WWButton({
     super.key,
     this.alignment,
     this.buttonTextStyle,

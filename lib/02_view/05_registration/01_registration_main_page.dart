@@ -6,7 +6,7 @@ import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/06_utils/routes/route_names.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
-import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_Button.dart';
 import 'package:edu_assign/07_widgets/ww_response_handler.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class RegistrationMainPage extends StatelessWidget {
                       child: const RegistrationListViewWidget()));
             }),
             sized0hx10,
-            CmButton(
+            WWButton(
               text: 'New Registration',
               color: AppColors.cLightBlue,
               textColor: AppColors.cBlue,

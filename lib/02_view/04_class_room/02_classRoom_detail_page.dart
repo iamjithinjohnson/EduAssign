@@ -5,7 +5,7 @@ import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
-import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_Button.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -32,7 +32,7 @@ class ClassRoomDetailPage extends StatelessWidget {
             return wwTile(
                 title: vmClassRoom.detailSubject?.name ?? 'Add Subject',
                 subtitle: vmClassRoom.detailSubject?.teacher,
-                trailingW: CmButton(
+                trailingW: WWButton(
                   loading: vmClassRoom.classDetailResponse.loading,
                   width: 120,
                   text: vmClassRoom.detailSubject?.name != null

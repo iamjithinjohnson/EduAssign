@@ -4,7 +4,7 @@ import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
 import 'package:edu_assign/07_widgets/00_widgets.dart';
-import 'package:edu_assign/07_widgets/cmbutton.dart';
+import 'package:edu_assign/07_widgets/ww_Button.dart';
 import 'package:edu_assign/07_widgets/ww_popup_error.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class NewRegistrationPage extends StatelessWidget {
           }),
           sized0hx50,
           Observer(builder: (context) {
-            return CmButton(
+            return WWButton(
               text: 'Register',
               color: AppColors.cGreen,
               width: ScreenUtil().screenWidth / 3,
