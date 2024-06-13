@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:edu_assign/01_model/02_students/student_model/student.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
 import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
@@ -50,7 +50,7 @@ class StudentsListViewWidget extends StatelessWidget {
         itemCount: vmStudent.studentResponse.data?.students?.length ?? 0,
         separatorBuilder: (_, i) => sized0hx20,
         itemBuilder: (context, index) {
-          Student? data = vmStudent.studentResponse.data?.students?[index];
+          EduModel? data = vmStudent.studentResponse.data?.students?[index];
           return wwTile(
               title: data?.name ?? '',
               subtitle: data?.email ?? '',

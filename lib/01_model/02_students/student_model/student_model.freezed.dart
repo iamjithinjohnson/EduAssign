@@ -20,7 +20,7 @@ StudentModel _$StudentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StudentModel {
-  List<Student>? get students => throw _privateConstructorUsedError;
+  List<EduModel>? get students => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $StudentModelCopyWith<$Res> {
           StudentModel value, $Res Function(StudentModel) then) =
       _$StudentModelCopyWithImpl<$Res, StudentModel>;
   @useResult
-  $Res call({List<Student>? students});
+  $Res call({List<EduModel>? students});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$StudentModelCopyWithImpl<$Res, $Val extends StudentModel>
       students: freezed == students
           ? _value.students
           : students // ignore: cast_nullable_to_non_nullable
-              as List<Student>?,
+              as List<EduModel>?,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$StudentModelImplCopyWith<$Res>
       __$$StudentModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Student>? students});
+  $Res call({List<EduModel>? students});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$StudentModelImplCopyWithImpl<$Res>
       students: freezed == students
           ? _value._students
           : students // ignore: cast_nullable_to_non_nullable
-              as List<Student>?,
+              as List<EduModel>?,
     ));
   }
 }
@@ -97,14 +97,14 @@ class __$$StudentModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$StudentModelImpl implements _StudentModel {
-  _$StudentModelImpl({final List<Student>? students}) : _students = students;
+  _$StudentModelImpl({final List<EduModel>? students}) : _students = students;
 
   factory _$StudentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudentModelImplFromJson(json);
 
-  final List<Student>? _students;
+  final List<EduModel>? _students;
   @override
-  List<Student>? get students {
+  List<EduModel>? get students {
     final value = _students;
     if (value == null) return null;
     if (_students is EqualUnmodifiableListView) return _students;
@@ -145,13 +145,13 @@ class _$StudentModelImpl implements _StudentModel {
 }
 
 abstract class _StudentModel implements StudentModel {
-  factory _StudentModel({final List<Student>? students}) = _$StudentModelImpl;
+  factory _StudentModel({final List<EduModel>? students}) = _$StudentModelImpl;
 
   factory _StudentModel.fromJson(Map<String, dynamic> json) =
       _$StudentModelImpl.fromJson;
 
   @override
-  List<Student>? get students;
+  List<EduModel>? get students;
   @override
   @JsonKey(ignore: true)
   _$$StudentModelImplCopyWith<_$StudentModelImpl> get copyWith =>

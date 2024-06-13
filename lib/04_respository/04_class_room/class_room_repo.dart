@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/class_room_model.dart';
-import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
 import 'package:edu_assign/05_services/http_service.dart';
 import 'package:edu_assign/06_utils/end_points.dart';
 import 'package:edu_assign/06_utils/failure/main_failure.dart';
@@ -10,7 +10,7 @@ abstract class IClassRoomRepo {
   Future<Either<Map<MainFailure, dynamic>, ClassRoomModel>>
       fetchClassRoomRepo();
 
-  Future<Either<Map<MainFailure, dynamic>, Classroom>> classRoomDetailRepo(
+  Future<Either<Map<MainFailure, dynamic>, EduModel>> classRoomDetailRepo(
       {required int classId});
 
   Future<Either<Map<MainFailure, dynamic>, String>> classRoomSubjectUpdateRepo(
@@ -31,11 +31,11 @@ class ClassRoomRepo implements IClassRoomRepo {
   }
 
   @override
-  Future<Either<Map<MainFailure, dynamic>, Classroom>> classRoomDetailRepo(
+  Future<Either<Map<MainFailure, dynamic>, EduModel>> classRoomDetailRepo(
       {required int classId}) async {
     final res =
         await httpService.request(apiUrl: '${EndPoints.classroomApi}/$classId');
-    return await res.fold((l) => Left(l), (r) => Right(Classroom.fromJson(r)));
+    return await res.fold((l) => Left(l), (r) => Right(EduModel.fromJson(r)));
   }
 
   @override

@@ -20,7 +20,7 @@ ClassRoomModel _$ClassRoomModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ClassRoomModel {
-  List<Classroom>? get classrooms => throw _privateConstructorUsedError;
+  List<EduModel>? get classrooms => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $ClassRoomModelCopyWith<$Res> {
           ClassRoomModel value, $Res Function(ClassRoomModel) then) =
       _$ClassRoomModelCopyWithImpl<$Res, ClassRoomModel>;
   @useResult
-  $Res call({List<Classroom>? classrooms});
+  $Res call({List<EduModel>? classrooms});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$ClassRoomModelCopyWithImpl<$Res, $Val extends ClassRoomModel>
       classrooms: freezed == classrooms
           ? _value.classrooms
           : classrooms // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>?,
+              as List<EduModel>?,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$ClassRoomModelImplCopyWith<$Res>
       __$$ClassRoomModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Classroom>? classrooms});
+  $Res call({List<EduModel>? classrooms});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$ClassRoomModelImplCopyWithImpl<$Res>
       classrooms: freezed == classrooms
           ? _value._classrooms
           : classrooms // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>?,
+              as List<EduModel>?,
     ));
   }
 }
@@ -97,15 +97,15 @@ class __$$ClassRoomModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ClassRoomModelImpl implements _ClassRoomModel {
-  _$ClassRoomModelImpl({final List<Classroom>? classrooms})
+  _$ClassRoomModelImpl({final List<EduModel>? classrooms})
       : _classrooms = classrooms;
 
   factory _$ClassRoomModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClassRoomModelImplFromJson(json);
 
-  final List<Classroom>? _classrooms;
+  final List<EduModel>? _classrooms;
   @override
-  List<Classroom>? get classrooms {
+  List<EduModel>? get classrooms {
     final value = _classrooms;
     if (value == null) return null;
     if (_classrooms is EqualUnmodifiableListView) return _classrooms;
@@ -148,14 +148,14 @@ class _$ClassRoomModelImpl implements _ClassRoomModel {
 }
 
 abstract class _ClassRoomModel implements ClassRoomModel {
-  factory _ClassRoomModel({final List<Classroom>? classrooms}) =
+  factory _ClassRoomModel({final List<EduModel>? classrooms}) =
       _$ClassRoomModelImpl;
 
   factory _ClassRoomModel.fromJson(Map<String, dynamic> json) =
       _$ClassRoomModelImpl.fromJson;
 
   @override
-  List<Classroom>? get classrooms;
+  List<EduModel>? get classrooms;
   @override
   @JsonKey(ignore: true)
   _$$ClassRoomModelImplCopyWith<_$ClassRoomModelImpl> get copyWith =>

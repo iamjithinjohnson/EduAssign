@@ -1,6 +1,4 @@
-import 'package:edu_assign/01_model/02_students/student_model/student.dart';
-import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
-import 'package:edu_assign/01_model/05_registration/registration_model/registration.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/01_model/05_registration/registration_model/registration_model.dart';
 import 'package:edu_assign/03_view_model/02_students/students_view_model.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
@@ -27,31 +25,31 @@ abstract class RegistrationViewModelBase with Store {
   RegistrationViewModelBase(this.iRegistrationRepo);
 
   @observable
-  Student? student;
+  EduModel? student;
 
   @observable
-  Subject? subject;
+  EduModel? subject;
 
   @observable
-  Student? detailStudent;
+  EduModel? detailStudent;
 
   @observable
-  Subject? detailSubject;
+  EduModel? detailSubject;
 
   @action
   void fetchSingleStudent(int stdId) {
-    List<Student>? students = vmStudent.studentResponse.data?.students;
+    List<EduModel>? students = vmStudent.studentResponse.data?.students;
 
     detailStudent = students?.firstWhere((element) => element.id == stdId,
-        orElse: () => Student());
+        orElse: () => EduModel());
   }
 
   @action
   void fetchSingleSubject(int subId) {
-    List<Subject>? subjects = vmSubject.subjectResponse.data?.subjects;
+    List<EduModel>? subjects = vmSubject.subjectResponse.data?.subjects;
 
     detailSubject = subjects?.firstWhere((element) => element.id == subId,
-        orElse: () => Subject());
+        orElse: () => EduModel());
   }
 
   @observable
@@ -118,7 +116,7 @@ abstract class RegistrationViewModelBase with Store {
         return ApiResponse(errors: l, loading: false);
       }, (r) {
         regModel = registrationResponse.data;
-        List<Registration>? reg = regModel?.registrations?.toList();
+        List<EduModel>? reg = regModel?.registrations?.toList();
         reg?.removeWhere((element) => element.id == regId);
         regModel = regModel?.copyWith(registrations: reg);
         registrationResponse = registrationResponse.copyWith(data: regModel);

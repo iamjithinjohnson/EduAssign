@@ -9,12 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i11;
-import 'package:edu_assign/01_model/02_students/student_model/student.dart'
-    as _i15;
-import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart'
-    as _i16;
-import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart'
-    as _i13;
+import 'package:edu_assign/01_model/00_common_model/common_model.dart' as _i13;
 import 'package:edu_assign/02_view/01_home_page/home_page.dart' as _i3;
 import 'package:edu_assign/02_view/02_students/01_students_main_page.dart'
     as _i8;
@@ -138,7 +133,7 @@ class ClassRoomDetailRoute
     extends _i11.PageRouteInfo<ClassRoomDetailRouteArgs> {
   ClassRoomDetailRoute({
     _i12.Key? key,
-    required _i13.Classroom? data,
+    required _i13.EduModel? data,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           ClassRoomDetailRoute.name,
@@ -163,7 +158,7 @@ class ClassRoomDetailRouteArgs {
 
   final _i12.Key? key;
 
-  final _i13.Classroom? data;
+  final _i13.EduModel? data;
 
   @override
   String toString() {
@@ -271,7 +266,7 @@ class RegistrationMainRoute extends _i11.PageRouteInfo<void> {
 class StudentDetailRoute extends _i11.PageRouteInfo<StudentDetailRouteArgs> {
   StudentDetailRoute({
     _i12.Key? key,
-    required _i15.Student? data,
+    required _i13.EduModel? data,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           StudentDetailRoute.name,
@@ -296,7 +291,7 @@ class StudentDetailRouteArgs {
 
   final _i12.Key? key;
 
-  final _i15.Student? data;
+  final _i13.EduModel? data;
 
   @override
   String toString() {
@@ -347,7 +342,7 @@ class StudentsMainRouteArgs {
 class SubjectDetailRoute extends _i11.PageRouteInfo<SubjectDetailRouteArgs> {
   SubjectDetailRoute({
     _i12.Key? key,
-    required _i16.Subject? data,
+    required _i13.EduModel? data,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           SubjectDetailRoute.name,
@@ -372,7 +367,7 @@ class SubjectDetailRouteArgs {
 
   final _i12.Key? key;
 
-  final _i16.Subject? data;
+  final _i13.EduModel? data;
 
   @override
   String toString() {

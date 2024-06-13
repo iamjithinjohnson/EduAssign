@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
 import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
 import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
@@ -59,7 +59,7 @@ class SubjectListViewWidget extends StatelessWidget {
         itemCount: res.data?.subjects?.length ?? 0,
         separatorBuilder: (_, i) => sized0hx20,
         itemBuilder: (context, index) {
-          Subject? data = res.data?.subjects?[index];
+          EduModel? data = res.data?.subjects?[index];
           return wwTile(
               title: data?.name ?? '',
               subtitle: data?.teacher ?? '',

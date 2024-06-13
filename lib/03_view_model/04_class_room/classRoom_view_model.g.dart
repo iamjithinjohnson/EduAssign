@@ -46,13 +46,13 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
       Atom(name: 'ClassRoomViewModelBase.detailSubject', context: context);
 
   @override
-  Subject? get detailSubject {
+  EduModel? get detailSubject {
     _$detailSubjectAtom.reportRead();
     return super.detailSubject;
   }
 
   @override
-  set detailSubject(Subject? value) {
+  set detailSubject(EduModel? value) {
     _$detailSubjectAtom.reportWrite(value, super.detailSubject, () {
       super.detailSubject = value;
     });
@@ -62,13 +62,13 @@ mixin _$ClassRoomViewModel on ClassRoomViewModelBase, Store {
       name: 'ClassRoomViewModelBase.classDetailResponse', context: context);
 
   @override
-  ApiResponse<Classroom> get classDetailResponse {
+  ApiResponse<EduModel> get classDetailResponse {
     _$classDetailResponseAtom.reportRead();
     return super.classDetailResponse;
   }
 
   @override
-  set classDetailResponse(ApiResponse<Classroom> value) {
+  set classDetailResponse(ApiResponse<EduModel> value) {
     _$classDetailResponseAtom.reportWrite(value, super.classDetailResponse, () {
       super.classDetailResponse = value;
     });

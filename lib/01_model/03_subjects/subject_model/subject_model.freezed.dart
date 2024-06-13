@@ -20,7 +20,7 @@ SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SubjectModel {
-  List<Subject>? get subjects => throw _privateConstructorUsedError;
+  List<EduModel>? get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $SubjectModelCopyWith<$Res> {
           SubjectModel value, $Res Function(SubjectModel) then) =
       _$SubjectModelCopyWithImpl<$Res, SubjectModel>;
   @useResult
-  $Res call({List<Subject>? subjects});
+  $Res call({List<EduModel>? subjects});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
       subjects: freezed == subjects
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>?,
+              as List<EduModel>?,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$SubjectModelImplCopyWith<$Res>
       __$$SubjectModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Subject>? subjects});
+  $Res call({List<EduModel>? subjects});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
       subjects: freezed == subjects
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>?,
+              as List<EduModel>?,
     ));
   }
 }
@@ -97,14 +97,14 @@ class __$$SubjectModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SubjectModelImpl implements _SubjectModel {
-  _$SubjectModelImpl({final List<Subject>? subjects}) : _subjects = subjects;
+  _$SubjectModelImpl({final List<EduModel>? subjects}) : _subjects = subjects;
 
   factory _$SubjectModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectModelImplFromJson(json);
 
-  final List<Subject>? _subjects;
+  final List<EduModel>? _subjects;
   @override
-  List<Subject>? get subjects {
+  List<EduModel>? get subjects {
     final value = _subjects;
     if (value == null) return null;
     if (_subjects is EqualUnmodifiableListView) return _subjects;
@@ -145,13 +145,13 @@ class _$SubjectModelImpl implements _SubjectModel {
 }
 
 abstract class _SubjectModel implements SubjectModel {
-  factory _SubjectModel({final List<Subject>? subjects}) = _$SubjectModelImpl;
+  factory _SubjectModel({final List<EduModel>? subjects}) = _$SubjectModelImpl;
 
   factory _SubjectModel.fromJson(Map<String, dynamic> json) =
       _$SubjectModelImpl.fromJson;
 
   @override
-  List<Subject>? get subjects;
+  List<EduModel>? get subjects;
   @override
   @JsonKey(ignore: true)
   _$$SubjectModelImplCopyWith<_$SubjectModelImpl> get copyWith =>

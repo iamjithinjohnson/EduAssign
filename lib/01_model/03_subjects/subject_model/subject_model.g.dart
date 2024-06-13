@@ -9,7 +9,7 @@ part of 'subject_model.dart';
 _$SubjectModelImpl _$$SubjectModelImplFromJson(Map<String, dynamic> json) =>
     _$SubjectModelImpl(
       subjects: (json['subjects'] as List<dynamic>?)
-          ?.map((e) => Subject.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => EduModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

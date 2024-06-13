@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:edu_assign/01_model/05_registration/registration_model/registration.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/03_view_model/05_registration/registration_view_model.dart';
 import 'package:edu_assign/06_utils/app_colors.dart';
 import 'package:edu_assign/06_utils/constant.dart';
@@ -70,7 +70,7 @@ class RegistrationListViewWidget extends StatelessWidget {
           itemCount: res.data?.registrations?.length ?? 0,
           separatorBuilder: (_, i) => sized0hx20,
           itemBuilder: (context, index) {
-            Registration? data = res.data?.registrations?[index];
+            EduModel? data = res.data?.registrations?[index];
             return wwTile(
                 title: 'Registration Id : #${data?.id}',
                 trailingW: const Icon(Icons.keyboard_arrow_right_rounded),

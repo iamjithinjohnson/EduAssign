@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/03_view_model/04_class_room/classRoom_view_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/06_utils/routes/app_routes.gr.dart';
@@ -54,7 +54,7 @@ class ClassRoomListViewWidget extends StatelessWidget {
         itemCount: vmClassRoom.classRoomResponse.data?.classrooms?.length ?? 0,
         separatorBuilder: (_, i) => sized0hx20,
         itemBuilder: (context, index) {
-          Classroom? data =
+          EduModel? data =
               vmClassRoom.classRoomResponse.data?.classrooms?[index];
           return wwTile(
               title: data?.name ?? '',

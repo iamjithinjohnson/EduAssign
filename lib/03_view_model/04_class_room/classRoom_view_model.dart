@@ -1,6 +1,5 @@
-import 'package:edu_assign/01_model/03_subjects/subject_model/subject.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/01_model/04_class_room/class_room_model/class_room_model.dart';
-import 'package:edu_assign/01_model/04_class_room/class_room_model/classroom.dart';
 import 'package:edu_assign/03_view_model/03_subjects/subject_view_model.dart';
 import 'package:edu_assign/04_respository/04_class_room/class_room_repo.dart';
 import 'package:edu_assign/06_utils/api_response/api_response.dart';
@@ -47,18 +46,18 @@ abstract class ClassRoomViewModelBase with Store {
   }
 
   @observable
-  Subject? detailSubject;
+  EduModel? detailSubject;
 
   @action
   void getSubjectName(int subId) {
-    List<Subject>? subjects = vmSubject.subjectResponse.data?.subjects;
+    List<EduModel>? subjects = vmSubject.subjectResponse.data?.subjects;
 
     detailSubject = subjects?.firstWhere((element) => element.id == subId,
-        orElse: () => Subject());
+        orElse: () => EduModel());
   }
 
   @observable
-  ApiResponse<Classroom> classDetailResponse = ApiResponse<Classroom>();
+  ApiResponse<EduModel> classDetailResponse = ApiResponse<EduModel>();
 
   @action
   Future<void> classRoomDetailApi({required int classId}) async {
@@ -71,8 +70,8 @@ abstract class ClassRoomViewModelBase with Store {
 
       classDetailResponse =
           res.fold((l) => ApiResponse(errors: l, loading: false), (r) {
-        if (r.subject is int) {
-          getSubjectName(r.subject);
+        if ((r.subject != null) && (r.subject is int)) {
+          getSubjectName(r.subject!);
         }
 
         return ApiResponse(data: r);

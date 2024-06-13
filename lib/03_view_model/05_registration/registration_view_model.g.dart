@@ -13,13 +13,13 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
       Atom(name: 'RegistrationViewModelBase.student', context: context);
 
   @override
-  Student? get student {
+  EduModel? get student {
     _$studentAtom.reportRead();
     return super.student;
   }
 
   @override
-  set student(Student? value) {
+  set student(EduModel? value) {
     _$studentAtom.reportWrite(value, super.student, () {
       super.student = value;
     });
@@ -29,13 +29,13 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
       Atom(name: 'RegistrationViewModelBase.subject', context: context);
 
   @override
-  Subject? get subject {
+  EduModel? get subject {
     _$subjectAtom.reportRead();
     return super.subject;
   }
 
   @override
-  set subject(Subject? value) {
+  set subject(EduModel? value) {
     _$subjectAtom.reportWrite(value, super.subject, () {
       super.subject = value;
     });
@@ -45,13 +45,13 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
       Atom(name: 'RegistrationViewModelBase.detailStudent', context: context);
 
   @override
-  Student? get detailStudent {
+  EduModel? get detailStudent {
     _$detailStudentAtom.reportRead();
     return super.detailStudent;
   }
 
   @override
-  set detailStudent(Student? value) {
+  set detailStudent(EduModel? value) {
     _$detailStudentAtom.reportWrite(value, super.detailStudent, () {
       super.detailStudent = value;
     });
@@ -61,13 +61,13 @@ mixin _$RegistrationViewModel on RegistrationViewModelBase, Store {
       Atom(name: 'RegistrationViewModelBase.detailSubject', context: context);
 
   @override
-  Subject? get detailSubject {
+  EduModel? get detailSubject {
     _$detailSubjectAtom.reportRead();
     return super.detailSubject;
   }
 
   @override
-  set detailSubject(Subject? value) {
+  set detailSubject(EduModel? value) {
     _$detailSubjectAtom.reportWrite(value, super.detailSubject, () {
       super.detailSubject = value;
     });

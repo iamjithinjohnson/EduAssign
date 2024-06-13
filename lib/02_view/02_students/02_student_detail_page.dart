@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:edu_assign/01_model/02_students/student_model/student.dart';
+import 'package:edu_assign/01_model/00_common_model/common_model.dart';
 import 'package:edu_assign/06_utils/constant.dart';
 import 'package:edu_assign/07_widgets/ww_text.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
 class StudentDetailPage extends StatelessWidget {
-  final Student? data;
+  final EduModel? data;
   const StudentDetailPage({super.key, required this.data});
 
   @override

@@ -10,7 +10,7 @@ _$RegistrationModelImpl _$$RegistrationModelImplFromJson(
         Map<String, dynamic> json) =>
     _$RegistrationModelImpl(
       registrations: (json['registrations'] as List<dynamic>?)
-          ?.map((e) => Registration.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => EduModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

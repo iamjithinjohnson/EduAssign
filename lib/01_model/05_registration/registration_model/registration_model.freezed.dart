@@ -20,7 +20,7 @@ RegistrationModel _$RegistrationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegistrationModel {
-  List<Registration>? get registrations => throw _privateConstructorUsedError;
+  List<EduModel>? get registrations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $RegistrationModelCopyWith<$Res> {
           RegistrationModel value, $Res Function(RegistrationModel) then) =
       _$RegistrationModelCopyWithImpl<$Res, RegistrationModel>;
   @useResult
-  $Res call({List<Registration>? registrations});
+  $Res call({List<EduModel>? registrations});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$RegistrationModelCopyWithImpl<$Res, $Val extends RegistrationModel>
       registrations: freezed == registrations
           ? _value.registrations
           : registrations // ignore: cast_nullable_to_non_nullable
-              as List<Registration>?,
+              as List<EduModel>?,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$RegistrationModelImplCopyWith<$Res>
       __$$RegistrationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Registration>? registrations});
+  $Res call({List<EduModel>? registrations});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
       registrations: freezed == registrations
           ? _value._registrations
           : registrations // ignore: cast_nullable_to_non_nullable
-              as List<Registration>?,
+              as List<EduModel>?,
     ));
   }
 }
@@ -97,15 +97,15 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RegistrationModelImpl implements _RegistrationModel {
-  _$RegistrationModelImpl({final List<Registration>? registrations})
+  _$RegistrationModelImpl({final List<EduModel>? registrations})
       : _registrations = registrations;
 
   factory _$RegistrationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegistrationModelImplFromJson(json);
 
-  final List<Registration>? _registrations;
+  final List<EduModel>? _registrations;
   @override
-  List<Registration>? get registrations {
+  List<EduModel>? get registrations {
     final value = _registrations;
     if (value == null) return null;
     if (_registrations is EqualUnmodifiableListView) return _registrations;
@@ -148,14 +148,14 @@ class _$RegistrationModelImpl implements _RegistrationModel {
 }
 
 abstract class _RegistrationModel implements RegistrationModel {
-  factory _RegistrationModel({final List<Registration>? registrations}) =
+  factory _RegistrationModel({final List<EduModel>? registrations}) =
       _$RegistrationModelImpl;
 
   factory _RegistrationModel.fromJson(Map<String, dynamic> json) =
       _$RegistrationModelImpl.fromJson;
 
   @override
-  List<Registration>? get registrations;
+  List<EduModel>? get registrations;
   @override
   @JsonKey(ignore: true)
   _$$RegistrationModelImplCopyWith<_$RegistrationModelImpl> get copyWith =>

@@ -9,7 +9,7 @@ part of 'student_model.dart';
 _$StudentModelImpl _$$StudentModelImplFromJson(Map<String, dynamic> json) =>
     _$StudentModelImpl(
       students: (json['students'] as List<dynamic>?)
-          ?.map((e) => Student.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => EduModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
