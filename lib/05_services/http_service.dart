@@ -20,6 +20,8 @@ class HttpService {
   factory HttpService() => _instance;
 
   HttpService._internal();
+  var baseUrl = dotenv.env['BASE_URL'];
+  var apiToken = dotenv.env['API_KEY'];
 
   Future<Either<Map<MainFailure, dynamic>, dynamic>> request({
     dynamic payLoad,
@@ -29,8 +31,6 @@ class HttpService {
     Client client;
     client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-    var baseUrl = dotenv.env['BASE_URL'];
-    var apiToken = dotenv.env['API_KEY'];
     try {
       final url = "$baseUrl/$apiUrl?$apiToken";
       customPrint(content: url, name: "url");
@@ -65,6 +65,78 @@ class HttpService {
     } finally {
       // client?.close();
     }
+  }
+
+  bool isFilePath(String path) => File(path).existsSync();
+
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> multipartRequest({
+    String? apiUrl,
+    String? method,
+    Map<String, dynamic>? data,
+  }) async {
+    final url = "$baseUrl/$apiUrl?$apiToken";
+
+    MultipartRequest request = MultipartRequest(method!, Uri.parse(url));
+    customPrint(content: url, name: "multiPart url");
+
+    return tryCatch(null, () async {
+      request.headers.addAll({
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data',
+      });
+
+      if (data != null) {
+        data.forEach((key, value) async {
+          if (value != null && value != '') {
+            if (value is String && isFilePath(value)) {
+              request.files.add(await MultipartFile.fromPath(key, value));
+            } else {
+              request.fields[key] = value.toString();
+            }
+          }
+        });
+      }
+
+      StreamedResponse streamedResponse = await request.send();
+      final response = await Response.fromStream(streamedResponse);
+      customPrint(content: response.body, name: "StreamedResponse");
+      customPrint(content: response.statusCode, name: "multiPart statusCode");
+
+      if (response.statusCode == HttpStatus.ok ||
+          response.statusCode == HttpStatus.created) {
+        return Right(jsonDecode(response.body));
+      } else {
+        return Left({
+          const MainFailure.clientFailure():
+              jsonDecode(response.body)["detail"] ??
+                  jsonDecode(response.body)["app_data"]
+        });
+      }
+    });
+  }
+}
+
+Future<Either<Map<MainFailure, dynamic>, dynamic>> tryCatch(
+    Client? client,
+    Future<Either<Map<MainFailure, dynamic>, dynamic>> Function()
+        function) async {
+  try {
+    return function();
+  } on FormatException catch (_) {
+    customPrint(content: 'format exception catched');
+    return Left({const MainFailure.clientFailure(): null});
+  } on HttpException catch (_) {
+    return Left({const MainFailure.clientFailure(): null});
+  } on TimeoutException catch (_) {
+    return Left({const MainFailure.timeout(): null});
+  } on SocketException catch (_) {
+    return Left({const MainFailure.networkFailure(): null});
+  } catch (e) {
+    customPrint(content: 'error catched');
+    debugPrint(e.toString());
+    return Left({const MainFailure.clientFailure(): null});
+  } finally {
+    // client?.close();
   }
 }
 

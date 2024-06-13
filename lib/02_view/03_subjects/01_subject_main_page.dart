@@ -56,11 +56,13 @@ class SubjectListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var res = vmSubject.subjectResponse;
+
     return ListView.separated(
-        itemCount: vmSubject.subjectResponse.data?.subjects?.length ?? 0,
+        itemCount: res.data?.subjects?.length ?? 0,
         separatorBuilder: (_, i) => sized0hx20,
         itemBuilder: (context, index) {
-          Subject? data = vmSubject.subjectResponse.data?.subjects?[index];
+          Subject? data = res.data?.subjects?[index];
           return wwTile(
               title: data?.name ?? '',
               subtitle: data?.teacher ?? '',

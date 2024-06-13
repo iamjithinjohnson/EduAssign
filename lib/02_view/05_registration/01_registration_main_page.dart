@@ -63,14 +63,12 @@ class RegistrationListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var res = vmRegistration.registrationResponse;
     return ListView.separated(
-        itemCount:
-            vmRegistration.registrationResponse.data?.registrations?.length ??
-                0,
+        itemCount: res.data?.registrations?.length ?? 0,
         separatorBuilder: (_, i) => sized0hx20,
         itemBuilder: (context, index) {
-          Registration? data =
-              vmRegistration.registrationResponse.data?.registrations?[index];
+          Registration? data = res.data?.registrations?[index];
           return wwTile(
               title: 'Registration Id : #${data?.id}',
               trailingW: const Icon(Icons.keyboard_arrow_right_rounded),
